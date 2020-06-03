@@ -1,0 +1,7 @@
+title :
+magnesium and oxygen reaction Experiment
+
+description :
+When magnesium is in its metal form it will burn very easily in air.in order to start the reaction the magnesium metal needs a source of energy.
+The flame provides a source of heat so that the magnesium metal atoms can overcome their activation energy. Activation energy is the minimum energy required in order for a chemical reaction to proceed.
+When the magnesium metal burns it reacts with oxygen found in the air to form Magnesium Oxide.

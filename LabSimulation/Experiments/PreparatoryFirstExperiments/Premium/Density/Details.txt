@@ -1,0 +1,7 @@
+title :
+ Density experiment
+
+description :
+in this experiment,We Will see Materials having the density lesser than water or other liquid will float.
+ For example, wood and sponges will float in water. Because of low density than water,
+ Ice will float in water. Materials having more density than water will sink in water.

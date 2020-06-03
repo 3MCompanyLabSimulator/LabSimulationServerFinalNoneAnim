@@ -1,0 +1,294 @@
+﻿@using LabSimulation.Models
+@model HomeIndexVM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+
+<div class="page-info-section set-bg" data-setbg="/Content/Site/img/LabSimulator2.jpg">
+    <div class="container">
+        <div class="site-breadcrumb">
+            <a href="~/Experiences/Index">Experiments page</a>
+            <span>
+                Experiment
+                @Html.DisplayFor(model => model.ExperienceDetails.ExperienceName)
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<section class="container-fluid spad">
+    <div class="title-section mb-5 text-center col-12">
+        <div class="container">
+            <h2 class="mb-3">
+                @Html.DisplayFor(model => model.ExperienceDetails.ExperienceName)
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="@Model.ExperienceDetails.SrcPath"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="title-section text-center col-12 mt-5">
+        <div class="container">
+            <h2 class="mb-3">
+                Description
+            </h2>
+            <p>
+                @Html.DisplayFor(model => model.ExperienceDetails.Description)
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<div class="container">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Comments</h2>
+                </div>
+                <div class="comment-widgets">
+                    <!-- Comment Row -->
+                    <p>
+                        <a class="btn btn-success text-white" href="/Experiences/CreateComment/@Model.ExperienceDetails.ID?subjectID=@Model.ExperienceDetails.SubjectID&educationalYearID=@Model.ExperienceDetails.EducationalYearID&educationalLevelID=@Model.ExperienceDetails.EducationalLevelID"> Add comment</a>
+                    </p>
+
+                    @foreach (var item in Model.comments)
+                    {
+                <div class="d-flex flex-row comment-row">
+                    <div class="p-2">
+                        @{
+                            if (item.Image != null)
+                            {
+                                var base64 = Convert.ToBase64String(item.Image);
+                                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                                <img src="@imgSrc" alt="@item.FullName" title="@item.FullName" width="75" height="75" class="rounded-circle img-responsive" />
+
+                            }
+                            else
+                            {
+                                <img src="~/Content/Site/img/User/UserImage.png" alt="@item.FullName" title="@item.FullName" height="75" width="75" class="rounded-circle img-responsive" />
+                            }
+                        }
+
+                    </div>
+
+                    <div class="comment-text w-100">
+                        <h5 class="font-medium">
+                            @{
+                                if (item.FullName == " ")
+                                {
+                                    <span>Anonymous User</span>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                }
+                            }
+                        </h5>
+                        <span class="m-b-15 d-block">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </span>
+                        <div class="comment-footer">
+                            <span class="text-muted float-right">
+                                @Html.DisplayFor(modelItem => item.CommentDateTime)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->
+
+
+
+
+@if (TempData["MustLoginFree"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'warning',
+                title: '@TempData["MustLoginFree"]',
+                text: 'Dear User, you have to register at least as account free and you will enjoy the free or premium features',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Sign up Page',
+                cancelButtonText: 'Back to experiments Page'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/Users/SignUp";
+                }
+                else {
+                    window.location.href = "/Experiences/Index";
+                }
+            });
+        }
+    </script>
+}
+
+@if (TempData["MustLoginPremium"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'warning',
+                title: '@TempData["MustLoginPremium"]',
+                text: 'Dear User, you have to register as account premium and you will enjoy the premium features',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Sign up Page',
+                cancelButtonText: 'Back to experiments Page'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/Users/SignUp";
+                }
+                else {
+                    window.location.href = "/Experiences/Index";
+                }
+            });
+        }
+    </script>
+}
+
+@if (TempData["ChangeToPremiumStudent"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'warning',
+                title: '@TempData["ChangeToPremiumStudent"]',
+                text: 'Dear Student, in order to try premium, your school has to switch its account to premium first and Consequently all students will enjoy the premium features',
+                showCancelButton: false,
+                confirmButtonColor: '#000',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Back to experiments Page',
+                cancelButtonText: 'Back to experiments Page'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/Experiences/Index";
+                }
+                else {
+                    window.location.href = "/Experiences/Index";
+                }
+            });
+        }
+    </script>
+}
+
+@if (TempData["ChangeToPremium"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'warning',
+                title: '@TempData["ChangeToPremium"]',
+                text: 'Dear User, you have to switch your account to premium and you will enjoy the premium features',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Change your price plan',
+                cancelButtonText: 'Back to experiments Page'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection";
+                }
+                else {
+                    window.location.href = "/Experiences/Index";
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,971 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LabSimulationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CommentDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EducationalLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageLevelPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EducationalYear">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Likes" Type="bigint" />
+          <Property Name="SrcPath" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ExperienceID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="ExperienceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="25" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="38" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="IsConfirm" Type="bit" Nullable="false" />
+          <Property Name="IsPremiumAccount" Type="bit" Nullable="false" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="UserTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTypeAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A61AC9_labsimulator.dbo.View_Comments_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Comments_Users">
+          <Key>
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="CommentID" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="EducationalLevelID" />
+          </Key>
+          <Property Name="FullName" Type="nvarchar" MaxLength="51" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CommentDateTime" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CommentID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A61AC9_labsimulator.dbo.View_EducationalLeve_CountExperience' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_EducationalLeve_CountExperience">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CountExperience" Type="int" />
+          <Property Name="ImageLevelPath" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A61AC9_labsimulator.dbo.View_ExperienceInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_ExperienceInfo">
+          <Key>
+            <PropertyRef Name="EducationalLevelName" />
+            <PropertyRef Name="EducationalYearName" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="ExperienceName" />
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EducationalYearName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExperienceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Likes" Type="bigint" />
+          <Property Name="SrcPath" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationalLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationalYearID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A61AC9_labsimulator.dbo.View_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_User">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="IsConfirm" />
+            <PropertyRef Name="IsPremiumAccount" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="51" Nullable="false" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="38" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="IsConfirm" Type="bit" Nullable="false" />
+          <Property Name="IsPremiumAccount" Type="bit" Nullable="false" />
+          <Property Name="SchoolID" Type="int" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comminte_Experience">
+          <End Role="Experience" Type="Self.Experience" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationalYear_EducationalLevel">
+          <End Role="EducationalLevel" Type="Self.EducationalLevel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EducationalYear" Type="Self.EducationalYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EducationalYear">
+              <PropertyRef Name="EducationalLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Experience_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Experience" Type="Self.Experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Experience">
+          <End Role="Experience" Type="Self.Experience" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ExperienceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_EducationalYear">
+          <End Role="EducationalYear" Type="Self.EducationalYear" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalYear">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserTypeAccount">
+          <End Role="UserTypeAccount" Type="Self.UserTypeAccount" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LabSimulationDBModelStoreContainer">
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationalLevel" EntityType="Self.EducationalLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationalYear" EntityType="Self.EducationalYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experience" EntityType="Self.Experience" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeAccount" EntityType="Self.UserTypeAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Comments_Users" EntityType="Self.View_Comments_Users" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Comments_Users].[FullName] AS [FullName], 
+    [View_Comments_Users].[Image] AS [Image], 
+    [View_Comments_Users].[Comments] AS [Comments], 
+    [View_Comments_Users].[CommentDateTime] AS [CommentDateTime], 
+    [View_Comments_Users].[UserID] AS [UserID], 
+    [View_Comments_Users].[CommentID] AS [CommentID], 
+    [View_Comments_Users].[ID] AS [ID], 
+    [View_Comments_Users].[SubjectID] AS [SubjectID], 
+    [View_Comments_Users].[EducationalYearID] AS [EducationalYearID], 
+    [View_Comments_Users].[EducationalLevelID] AS [EducationalLevelID]
+    FROM [dbo].[View_Comments_Users] AS [View_Comments_Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_EducationalLeve_CountExperience" EntityType="Self.View_EducationalLeve_CountExperience" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_EducationalLeve_CountExperience].[Name] AS [Name], 
+    [View_EducationalLeve_CountExperience].[ID] AS [ID], 
+    [View_EducationalLeve_CountExperience].[CountExperience] AS [CountExperience], 
+    [View_EducationalLeve_CountExperience].[ImageLevelPath] AS [ImageLevelPath]
+    FROM [dbo].[View_EducationalLeve_CountExperience] AS [View_EducationalLeve_CountExperience]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ExperienceInfo" EntityType="Self.View_ExperienceInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_ExperienceInfo].[EducationalLevelName] AS [EducationalLevelName], 
+    [View_ExperienceInfo].[EducationalYearName] AS [EducationalYearName], 
+    [View_ExperienceInfo].[SubjectName] AS [SubjectName], 
+    [View_ExperienceInfo].[ExperienceName] AS [ExperienceName], 
+    [View_ExperienceInfo].[Description] AS [Description], 
+    [View_ExperienceInfo].[Likes] AS [Likes], 
+    [View_ExperienceInfo].[SrcPath] AS [SrcPath], 
+    [View_ExperienceInfo].[Image] AS [Image], 
+    [View_ExperienceInfo].[Type] AS [Type], 
+    [View_ExperienceInfo].[EducationalLevelID] AS [EducationalLevelID], 
+    [View_ExperienceInfo].[EducationalYearID] AS [EducationalYearID], 
+    [View_ExperienceInfo].[SubjectID] AS [SubjectID], 
+    [View_ExperienceInfo].[ID] AS [ID]
+    FROM [dbo].[View_ExperienceInfo] AS [View_ExperienceInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_User" EntityType="Self.View_User" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_User].[ID] AS [ID], 
+    [View_User].[FullName] AS [FullName], 
+    [View_User].[SchoolName] AS [SchoolName], 
+    [View_User].[UserName] AS [UserName], 
+    [View_User].[Email] AS [Email], 
+    [View_User].[Password] AS [Password], 
+    [View_User].[Image] AS [Image], 
+    [View_User].[IsConfirm] AS [IsConfirm], 
+    [View_User].[IsPremiumAccount] AS [IsPremiumAccount], 
+    [View_User].[SchoolID] AS [SchoolID], 
+    [View_User].[UserType] AS [UserType]
+    FROM [dbo].[View_User] AS [View_User]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Comment_Users" Association="Self.FK_Comment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comminte_Experience" Association="Self.FK_Comminte_Experience">
+            <End Role="Experience" EntitySet="Experience" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalYear_EducationalLevel" Association="Self.FK_EducationalYear_EducationalLevel">
+            <End Role="EducationalLevel" EntitySet="EducationalLevel" />
+            <End Role="EducationalYear" EntitySet="EducationalYear" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Experience_Subject" Association="Self.FK_Experience_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Experience" EntitySet="Experience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Experience" Association="Self.FK_Favorite_Experience">
+            <End Role="Experience" EntitySet="Experience" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Users" Association="Self.FK_Favorite_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_EducationalYear" Association="Self.FK_Subject_EducationalYear">
+            <End Role="EducationalYear" EntitySet="EducationalYear" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserTypeAccount" Association="Self.FK_Users_UserTypeAccount">
+            <End Role="UserTypeAccount" EntitySet="UserTypeAccount" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LabSimulationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EducationalLevel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EducationalYears" Relationship="Self.FK_EducationalYear_EducationalLevel" FromRole="EducationalLevel" ToRole="EducationalYear" />
+          <Property Name="ImageLevelPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EducationalYear">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EducationalLevel" Relationship="Self.FK_EducationalYear_EducationalLevel" FromRole="EducationalYear" ToRole="EducationalLevel" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK_Subject_EducationalYear" FromRole="EducationalYear" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EducationalYear" Relationship="Self.FK_Subject_EducationalYear" FromRole="Subject" ToRole="EducationalYear" />
+          <NavigationProperty Name="Experiences" Relationship="LabSimulationDBModel.FK_Experience_Subject" FromRole="Subject" ToRole="Experience" />
+        </EntityType>
+        <Association Name="FK_EducationalYear_EducationalLevel">
+          <End Role="EducationalLevel" Type="Self.EducationalLevel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EducationalYear" Type="Self.EducationalYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalLevel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EducationalYear">
+              <PropertyRef Name="EducationalLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_EducationalYear">
+          <End Role="EducationalYear" Type="Self.EducationalYear" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationalYear">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LabSimulationDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EducationalLevels" EntityType="Self.EducationalLevel" />
+          <EntitySet Name="EducationalYears" EntityType="Self.EducationalYear" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <AssociationSet Name="FK_EducationalYear_EducationalLevel" Association="Self.FK_EducationalYear_EducationalLevel">
+            <End Role="EducationalLevel" EntitySet="EducationalLevels" />
+            <End Role="EducationalYear" EntitySet="EducationalYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_EducationalYear" Association="Self.FK_Subject_EducationalYear">
+            <End Role="EducationalYear" EntitySet="EducationalYears" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <EntitySet Name="View_EducationalLeve_CountExperience" EntityType="LabSimulationDBModel.View_EducationalLeve_CountExperience" />
+          <EntitySet Name="Experiences" EntityType="LabSimulationDBModel.Experience" />
+          <EntitySet Name="View_ExperienceInfo" EntityType="LabSimulationDBModel.View_ExperienceInfo" />
+          <AssociationSet Name="FK_Experience_Subject" Association="LabSimulationDBModel.FK_Experience_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Experience" EntitySet="Experiences" />
+          </AssociationSet>
+          <EntitySet Name="Favorites" EntityType="LabSimulationDBModel.Favorite" />
+          <AssociationSet Name="FK_Favorite_Experience" Association="LabSimulationDBModel.FK_Favorite_Experience">
+            <End Role="Experience" EntitySet="Experiences" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="LabSimulationDBModel.User" />
+          <EntitySet Name="UserTypeAccounts" EntityType="LabSimulationDBModel.UserTypeAccount" />
+          <AssociationSet Name="FK_Favorite_Users" Association="LabSimulationDBModel.FK_Favorite_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserTypeAccount" Association="LabSimulationDBModel.FK_Users_UserTypeAccount">
+            <End Role="UserTypeAccount" EntitySet="UserTypeAccounts" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="View_User" EntityType="LabSimulationDBModel.View_User" />
+          <EntitySet Name="View_Comments_Users" EntityType="LabSimulationDBModel.View_Comments_Users" />
+          <EntitySet Name="Comments" EntityType="LabSimulationDBModel.Comment" />
+          <AssociationSet Name="FK_Comment_Users" Association="LabSimulationDBModel.FK_Comment_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comminte_Experience" Association="LabSimulationDBModel.FK_Comminte_Experience">
+            <End Role="Experience" EntitySet="Experiences" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="View_EducationalLeve_CountExperience">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CountExperience" Type="Int32" />
+          <Property Name="ImageLevelPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Likes" Type="Int64" />
+          <Property Name="SrcPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subject" Relationship="LabSimulationDBModel.FK_Experience_Subject" FromRole="Experience" ToRole="Subject" />
+          <NavigationProperty Name="Favorites" Relationship="LabSimulationDBModel.FK_Favorite_Experience" FromRole="Experience" ToRole="Favorite" />
+          <NavigationProperty Name="Comments" Relationship="LabSimulationDBModel.FK_Comminte_Experience" FromRole="Experience" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="View_ExperienceInfo">
+          <Key>
+            <PropertyRef Name="EducationalLevelName" />
+            <PropertyRef Name="EducationalYearName" />
+            <PropertyRef Name="SubjectName" />
+            <PropertyRef Name="ExperienceName" />
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="EducationalLevelName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationalYearName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExperienceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Likes" Type="Int64" />
+          <Property Name="SrcPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Experience_Subject">
+          <End Type="LabSimulationDBModel.Subject" Role="Subject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LabSimulationDBModel.Experience" Role="Experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="EducationalLevelID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="ExperienceID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="ExperienceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Experience" Relationship="LabSimulationDBModel.FK_Favorite_Experience" FromRole="Favorite" ToRole="Experience" />
+          <NavigationProperty Name="User" Relationship="LabSimulationDBModel.FK_Favorite_Users" FromRole="Favorite" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Favorite_Experience">
+          <End Type="LabSimulationDBModel.Experience" Role="Experience" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LabSimulationDBModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ExperienceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsConfirm" Type="Boolean" Nullable="false" />
+          <Property Name="IsPremiumAccount" Type="Boolean" Nullable="false" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="UserTypeID" Type="Int32" />
+          <NavigationProperty Name="Favorites" Relationship="LabSimulationDBModel.FK_Favorite_Users" FromRole="User" ToRole="Favorite" />
+          <NavigationProperty Name="UserTypeAccount" Relationship="LabSimulationDBModel.FK_Users_UserTypeAccount" FromRole="User" ToRole="UserTypeAccount" />
+          <NavigationProperty Name="Comments" Relationship="LabSimulationDBModel.FK_Comment_Users" FromRole="User" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="UserTypeAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="LabSimulationDBModel.FK_Users_UserTypeAccount" FromRole="UserTypeAccount" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Favorite_Users">
+          <End Type="LabSimulationDBModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LabSimulationDBModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserTypeAccount">
+          <End Type="LabSimulationDBModel.UserTypeAccount" Role="UserTypeAccount" Multiplicity="0..1" />
+          <End Type="LabSimulationDBModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_User">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="IsConfirm" />
+            <PropertyRef Name="IsPremiumAccount" />
+            <PropertyRef Name="UserType" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsConfirm" Type="Boolean" Nullable="false" />
+          <Property Name="IsPremiumAccount" Type="Boolean" Nullable="false" />
+          <Property Name="SchoolID" Type="Int32" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Comments_Users">
+          <Key>
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="CommentID" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SubjectID" />
+            <PropertyRef Name="EducationalYearID" />
+            <PropertyRef Name="EducationalLevelID" />
+          </Key>
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommentDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationalLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationalYearID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommentDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="LabSimulationDBModel.FK_Comment_Users" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="Experience" Relationship="LabSimulationDBModel.FK_Comminte_Experience" FromRole="Comment" ToRole="Experience" />
+        </EntityType>
+        <Association Name="FK_Comment_Users">
+          <End Type="LabSimulationDBModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="LabSimulationDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comminte_Experience">
+          <End Type="LabSimulationDBModel.Experience" Role="Experience" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LabSimulationDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experience">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="EducationalLevelID" />
+              <PropertyRef Name="EducationalYearID" />
+              <PropertyRef Name="SubjectID" />
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LabSimulationDBModelStoreContainer" CdmEntityContainer="LabSimulationDBEntities">
+          <EntitySetMapping Name="EducationalLevels">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.EducationalLevel">
+              <MappingFragment StoreEntitySet="EducationalLevel">
+                <ScalarProperty Name="ImageLevelPath" ColumnName="ImageLevelPath" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationalYears">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.EducationalYear">
+              <MappingFragment StoreEntitySet="EducationalYear">
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_EducationalLeve_CountExperience">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.View_EducationalLeve_CountExperience">
+              <MappingFragment StoreEntitySet="View_EducationalLeve_CountExperience">
+                <ScalarProperty Name="ImageLevelPath" ColumnName="ImageLevelPath" />
+                <ScalarProperty Name="CountExperience" ColumnName="CountExperience" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.Experience">
+              <MappingFragment StoreEntitySet="Experience">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="SrcPath" ColumnName="SrcPath" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ExperienceInfo">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.View_ExperienceInfo">
+              <MappingFragment StoreEntitySet="View_ExperienceInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="SrcPath" ColumnName="SrcPath" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExperienceName" ColumnName="ExperienceName" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="EducationalYearName" ColumnName="EducationalYearName" />
+                <ScalarProperty Name="EducationalLevelName" ColumnName="EducationalLevelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="IsPremiumAccount" ColumnName="IsPremiumAccount" />
+                <ScalarProperty Name="IsConfirm" ColumnName="IsConfirm" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypeAccounts">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.UserTypeAccount">
+              <MappingFragment StoreEntitySet="UserTypeAccount">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_User">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.View_User">
+              <MappingFragment StoreEntitySet="View_User">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="IsPremiumAccount" ColumnName="IsPremiumAccount" />
+                <ScalarProperty Name="IsConfirm" ColumnName="IsConfirm" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Comments_Users">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.View_Comments_Users">
+              <MappingFragment StoreEntitySet="View_Comments_Users">
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CommentDateTime" ColumnName="CommentDateTime" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="LabSimulationDBModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="CommentDateTime" ColumnName="CommentDateTime" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="EducationalYearID" ColumnName="EducationalYearID" />
+                <ScalarProperty Name="EducationalLevelID" ColumnName="EducationalLevelID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,110 @@
+﻿@model LabSimulation.Models.User
+
+@{
+    ViewBag.Title = "SignIn";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign In</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/Site/img/flask-png.png" rel="shortcut icon" />
+
+    <link href="~/Content/SignIn/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/SignIn/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/SignIn/css/util.css" rel="stylesheet" />
+    <link href="~/Content/SignIn/css/main.css" rel="stylesheet" />
+    <link href="~/Content/SignIn/css/styleParticles.css" rel="stylesheet" />
+    <link href="~/Content/SignIn/css/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/SweetAlert/sweetalert2.min.css" rel="stylesheet" />
+
+
+    <link href="~/Content/Preloder/preloder.css" rel="stylesheet" />
+
+</head>
+<body>
+    
+
+
+    <div class="d-flex justify-content-center align-content-center container-login">
+        <div class="wrap-login100 " data-aos="fade">
+            <div class="login100-form-title" style="background-image: url(/Content/SignIn/images/Untitled-1-Copy.jpg);">
+                <span class="login100-form-title-1">
+                    Sign In
+                </span>
+            </div>
+
+            @using (Html.BeginForm("SignIn", "Users", FormMethod.Post, new { @class = "login100-form validate-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Username is required">
+                    <input class="input100" type="text" name="EmailUserName" placeholder="Enter username or email" autocomplete="off">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Password is required" >
+
+                    <input class="input100" type="password" name="Password" placeholder="Enter password">
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="container-login100-form-btn d-flex justify-content-between p-b-30 p-t-20">
+                    <button class="site-btn">
+                        Sign In
+                    </button>
+                    <input type="button" value="Create new account" class="site-btn-s" onclick="window.location.href='SignUp';">
+
+
+                </div>
+
+
+                <div class="flex-sb-m w-full p-b-30 ">
+
+                </div>
+            }
+        </div>
+    </div>
+
+    <div id="particles-js"></div>
+
+
+    <script src="~/Content/SignIn/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/SignIn/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/SignIn/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/Preloder/preloder.js"></script>
+    <script src="~/Content/SignIn/js/main.js"></script>
+
+    <script src="~/Content/SignIn/js/particles.min.js"></script>
+    <script src="~/Content/SignIn/js/app.js"></script>
+
+
+    <script src="~/Content/SignIn/js/aos.js"></script>
+    <script src="~/Content/SignIn/js/scriptAnimation.js"></script>
+
+    <script src="~/Content/SweetAlert/sweetalert2.all.min.js"></script>
+
+
+    @if (TempData["Invalid Logged"] != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+            icon: 'error',
+            title: 'Invalid Logged',
+            text: '@TempData["Invalid Logged"]'
+            })
+        };
+        </script>
+    }
+</body>
+</html>

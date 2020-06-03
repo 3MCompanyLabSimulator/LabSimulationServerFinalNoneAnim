@@ -1,0 +1,402 @@
+body {
+  /* background: #fff;
+  color: #252525; */
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: .8rem;
+  
+ 
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: .8rem;
+  padding-right: .8rem;
+  width: 100%;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotateZ(0);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotateZ(-360deg);
+  }
+}
+
+
+
+body {
+  background: #181818;
+  color: #bebebe;
+  overflow: hidden;
+  background-image: url("https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg");
+}
+
+.solar-container {
+  bottom: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  height: 2rem;
+  justify-content: center;
+  left: 5vw;
+  position: fixed;
+  width: 90vw;
+  z-index: 9999;
+  
+}
+
+.solar-system {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: all .5s ease-in-out;
+  width: 100vw;
+  z-index: -1;
+}
+
+.solar-orbit {
+  border: .1rem solid rgba(255, 255, 255, 0.986);
+  border-radius: 50%;
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: border .2s ease-in-out;
+}
+
+.solar-orbit:hover {
+  border: .05rem solid rgba(224, 12, 12, 0.15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+}
+
+.solar-orbit .solar-object {
+  height: 0;
+  left: 100%;
+  position: absolute;
+  top: 50%;
+  width: 0 !important;
+}
+
+.solar-orbit .solar-object::before {
+  border: .1rem solid rgba(24, 24, 24, .25);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.solar-orbit.solar-sun {
+  border: 0;
+  height: 0;
+  width: 0;
+  z-index: 100;
+}
+
+.solar-orbit.solar-mercury {
+  animation: orbit 2.41s linear infinite;
+  height: 9.46rem;
+  width: 9.46rem;
+  z-index: 90;
+}
+
+.solar-orbit.solar-venus {
+  animation: orbit 6.15s linear infinite;
+  height: 11.64rem;
+  width: 11.64rem;
+  z-index: 80;
+}
+
+.solar-orbit.solar-earth {
+  animation: orbit 10s linear infinite;
+  height: 13.07rem;
+  width: 13.07rem;
+  z-index: 70;
+}
+
+.solar-orbit.solar-mars {
+  animation: orbit 18.81s linear infinite;
+  height: 15.32rem;
+  width: 15.32rem;
+  z-index: 60;
+}
+
+.solar-orbit.solar-asteroidbelt {
+  animation: orbit 45s linear infinite;
+  height: 20.89rem;
+  width: 20.89rem;
+  z-index: 55;
+}
+
+.solar-orbit.solar-jupiter {
+  animation: orbit 118.6s linear infinite;
+  height: 25.34rem;
+  width: 25.34rem;
+  z-index: 50;
+}
+
+.solar-orbit.solar-saturn {
+  animation: orbit 294.6s linear infinite;
+  height: 33.14rem;
+  width: 33.14rem;
+  z-index: 40;
+}
+
+.solar-orbit.solar-uranus {
+  animation: orbit 840.1s linear infinite;
+  height: 45.45rem;
+  width: 45.45rem;
+  z-index: 30;
+}
+
+.solar-orbit.solar-neptune {
+  animation: orbit 1648s linear infinite;
+  height: 56rem;
+  width: 56rem;
+  z-index: 20;
+}
+
+.solar-orbit .solar-moon {
+  animation: orbit .75s linear infinite;
+  height: .9rem;
+  top: 100%;
+  width: .9rem;
+}
+
+.solar-sun:hover > .solar-object::before {
+  box-shadow: 0 0 75vh #fa6d00;
+}
+
+.solar-sun > .solar-object::before {
+  background: #fa6d00;
+  box-shadow: 0 0 75vh rgba(250, 109, 0, .25);
+  height: 4rem;
+  transition: box-shadow 1s ease-in-out;
+  width: 4rem;
+}
+
+.solar-mercury > .solar-object {
+  width: .54rem;
+}
+
+.solar-mercury > .solar-object::before {
+  background: #f9af0e;
+  height: .54rem;
+  width: .54rem;
+}
+
+.solar-mercury.solar-caption:hover ~ .solar-system .solar-mercury {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-venus > .solar-object {
+  width: .61rem;
+}
+
+.solar-venus > .solar-object::before {
+  background: #f1b72c;
+  height: .61rem;
+  width: .61rem;
+}
+
+.solar-venus.solar-caption:hover ~ .solar-system .solar-venus {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-earth > .solar-object {
+  width: .61rem;
+}
+
+.solar-earth > .solar-object::before {
+  background: #538fc1;
+  background-image: url('https://pngimg.com/uploads/earth/earth_PNG37.png');
+  
+  height: .61rem;
+  width: .61rem;
+}
+
+.solar-earth.solar-caption:hover ~ .solar-system .solar-earth {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-mars > .solar-object {
+  width: .56rem;
+}
+
+.solar-mars > .solar-object::before {
+  background: #f5805b;
+  height: .56rem;
+  width: .56rem;
+}
+
+.solar-mars.solar-caption:hover ~ .solar-system .solar-mars {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-jupiter > .solar-object {
+  width: 1.75rem;
+}
+
+.solar-jupiter > .solar-object::before {
+  background: #e96b77;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.solar-jupiter.solar-caption:hover ~ .solar-system .solar-jupiter {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-saturn > .solar-object {
+  width: 1.54rem;
+}
+
+.solar-saturn > .solar-object::before {
+  background: #e7a155;
+  box-shadow: 0 0 0 .2rem #181818, 0 0 0 .4rem rgba(231, 161, 85, .2), 0 0 0 .5rem rgba(231, 161, 85, .1), 0 0 0 .7rem rgba(231, 161, 85, .1);
+  height: 1.54rem;
+  width: 1.54rem;
+}
+
+.solar-saturn.solar-caption:hover ~ .solar-system .solar-saturn {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-uranus > .solar-object {
+  width: .95rem;
+}
+
+.solar-uranus > .solar-object::before {
+  background: #86e5f8;
+  height: .95rem;
+  width: .95rem;
+}
+
+.solar-uranus.solar-caption:hover ~ .solar-system .solar-uranus {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-neptune > .solar-object {
+  width: .94rem;
+}
+
+.solar-neptune > .solar-object::before {
+  background: #95b4fb;
+  height: .94rem;
+  width: .94rem;
+}
+
+.solar-neptune.solar-caption:hover ~ .solar-system .solar-neptune {
+  border: .05rem solid rgba(190, 190, 190, .15);
+  box-shadow: inset 0 0 1rem rgba(190, 190, 190, .05);
+  opacity: 1;
+}
+
+.solar-moon > .solar-object::before {
+  background: #a9d3ee;
+  height: .05rem;
+  width: .05rem;
+}
+
+.solar-caption {
+  display: -ms-flexbox;
+  display: flex;
+  height: 2rem;
+  line-height: 1rem;
+  opacity: 1;
+  padding: .9rem;
+  position: relative;
+}
+
+.solar-caption:hover {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Let's Display The Caption */
+.solar-caption:hover .solar-card {
+  display: block;
+}
+
+.solar-caption:hover ~ .solar-system .solar-orbit {
+  opacity: .4;
+  transition: opacity .2s ease-in-out;
+}
+
+.solar-caption .solar-object {
+  height: 1rem;
+  margin-right: .5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.solar-caption .solar-object::before {
+  border: .1rem solid rgba(24, 24, 24, .15);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.solar-caption .solar-name {
+  font-size: .6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.solar-caption .solar-card {
+  background: #181818;
+  border: .1rem solid rgba(190, 190, 190, .1);
+  border-radius: .1rem;
+  display: none;
+  padding: .5rem;
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  width: 12rem;
+  z-index: 99999;
+}
+
+.solar-caption .solar-card .solar-name {
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.solar-caption .solar-card .card-subtitle {
+  font-size: .6rem;
+  font-weight: 400;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.solar-caption .solar-card .card-head {
+  font-size: .6rem;
+  margin-top: .5rem;
+  opacity: 1;
+}
+

@@ -1,0 +1,196 @@
+body {
+  background-color: #ADEFD1FF;
+}
+
+#displayDetection {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  left: 50%;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  clear: both;
+  margin-left: 150px;
+  border: 2px solid black;
+  padding: 10px;
+  background: #E8CBC0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #636FA4, #E8CBC0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #636FA4, #E8CBC0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+}
+
+.btnsContainer {
+  position: fixed;
+  background: #aa4b6b;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: fit-content;
+  padding: 20px;
+  clear: both;
+  float: left;
+  margin: 50px;
+  margin-top: 50px;
+  
+}
+.btnsContainer button {
+  margin-left: 10px;
+}
+
+.uploadOuter {
+  text-align: center;
+  padding: 20px;
+}
+.uploadOuter strong {
+  padding: 0 10px;
+}
+.dragBox {
+  width: 300px;
+  height: 110px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  font-weight: bolder;
+  line-height: 95px;
+  color: #999;
+  border: 4px dashed #ccc;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.dragBox input[type="file"] {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+.draging {
+  transform: scale(1.5);
+}
+#preview {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+#preview img {
+  max-width: 100%;
+}
+
+/* =========== */
+
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+
+
+.inner-header {
+  height:50vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+
+/* Bubbles Styles */
+
+
+
+.bubble {
+  width: 30px;
+  height: 30px;
+  background: #faf9f8;
+  border-radius: 100px;
+  position: absolute;
+}
+
+.x1 {
+  left: 5%;
+  transform: scale(0.9);
+  opacity: 0.2;
+background: rgb(247, 243, 243);
+animation: moveclouds 1.5s linear infinite
+}
+
+.x2 {
+  left: 90%;
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  transform: scale(0.6);
+  opacity: 0.2;
+  animation: moveclouds 3s linear infinite
+}
+.x3 {
+  left: 80%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0.2;
+  animation: moveclouds 1s linear infinite
+}
+.x4 {
+  left: 50%;
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  transform: scale(0.75);
+  opacity: 0.2;
+  animation: moveclouds 7s linear infinite
+}
+.x5 {
+  left: 30%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0.2; 
+  animation: moveclouds 4s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+.x6 {
+  left: 20%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0.2; 
+  animation: moveclouds 3s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+.x7 {
+  left: 40%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0.2; 
+  animation: moveclouds 3s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+.x8 {
+  left: 60%;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0.2; 
+  animation: moveclouds 5s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+
+
+/* @keyframes sideWays {
+  0% {
+      margin-left:0px;
+  }
+  100% {
+      margin-left:50px;
+  }
+} */
+@keyframes moveclouds {
+  0% { 
+      top: 250px;
+  }
+  100% { 
+      top: -10px;
+  }
+}
+

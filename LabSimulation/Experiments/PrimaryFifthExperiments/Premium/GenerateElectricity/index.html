@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Coils and Magnetic</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<!-- partial -->
+  <script src='https://zimjs.org/cdn/createjs_1.1_min.js'></script>
+<script src='https://zimjs.org/cdn/zim_10.4.0.js'></script>
+<script src='https://zimjs.org/cdn/icon4.js'></script>
+
+
+<script>
+var assets = ["../bulb.png", "../Mag.png", "../bulb2.png"];
+
+// var path = "../assets";
+var waiter = new Waiter();
+
+const frame = new Frame("fit", 2000, 768, darker, dark, assets, waiter);
+frame.on("ready", ()=>{ 
+    zog("ready from ZIM Frame");
+    var stage = frame.stage;
+    let stageW = frame.width;
+    let stageH = frame.height;
+    
+    var bulb = new createjs.Bitmap("https://i.ibb.co/Jpw4KvW/bulb.png");
+    
+    stage.addChild(bulb);
+    bulb.x = 80;
+    bulb.y = 100;
+    bulb.scale = 0.2;
+    
+    var bulbOff = new createjs.Bitmap("https://i.ibb.co/nMCVftH/bulb2.png");
+    
+    stage.addChild(bulbOff);
+    bulbOff.x = 80;
+    bulbOff.y = 103;
+    bulbOff.scale = 0.4;
+
+    var Mag = new createjs.Bitmap("https://i.ibb.co/kJDCyBW/Mag.png");
+    
+    stage.addChild(Mag);
+    Mag.x = 1680;
+    Mag.y = 103;
+    Mag.scale = 0.25;
+    
+
+    createjs.Tween.get(Mag, { loop: true})
+    .to({ y: 400 },600)
+    .to({y:200},600)
+  
+
+    var image = frame.asset("../bulb.png")
+    // here we will center the image, fade it in and make it click to a URL
+    .center(stage) // centers and adds to container (the stage in this case)
+    .animate({obj:{alpha:0}, time:2000, from:true})
+    .cur()
+    .sca(0.2)
+    .mov(-290,260)
+    .drag({all:true})
+    image.visible = false;
+
+    var image3 = frame.asset("../bulb2.png")
+    // here we will center the image, fade it in and make it click to a URL
+    .center(stage) // centers and adds to container (the stage in this case)
+    .animate({obj:{alpha:0}, time:2000, from:true})
+    .cur()
+    .sca(0.4)
+    .center(image)
+    .mov(79,25)
+    .drag({all:true})
+    image3.visible = false; 
+    
+    var image2 = frame.asset("../Mag.png")
+    // here we will center the image, fade it in and make it click to a URL
+    .center(stage) // centers and adds to container (the stage in this case)
+    .cur()
+    .sca(0.2)
+    .mov(920,180)
+    .drag({all:true})
+    .animate({
+        props:{y:60},
+        time:500,
+        loop:true,
+        rewind:true,
+     });
+     image2.visible = false;
+    
+     
+
+
+    let energy = 220;
+    const cabinet = new Rectangle(200,350,null,tin,5,[80,80,0,0])
+        .center().pos(null,-2,null,true).mov(-500,50);
+    // colors,ratios, x0,y0,radius0, x1,y1,radius1
+    cabinet.radialGradient([grey,dark],[0,.8], 100,150,150, 200,0,0);
+    var dial = new Dial({
+        min:0, max:50, step:10,
+        tickColor:silver, backgroundColor:light,
+    })
+        .sca(1.2).center().mov(-500,190)
+        .change(()=>{
+            if (dial.currentValue == 10) {
+     
+            energy = 50;
+            post2.visible = false;
+            post1.visible = true;  
+            post3.visible = false;
+            post5.visible = false;
+            post4.visible = false; 
+            post6.visible = false;
+            label2.text = '10 TURNS' 
+            bulb.visible = true;
+            Mag.visible = true;
+        }
+           else if (dial.currentValue == 20) { 
+         
+            energy = 100;
+            post1.visible = false;
+            post3.visible = false;
+            post4.visibe = false;
+            post5.visible = false;
+            post2.visible = true;
+            post6.visible = false;
+            label2.text = '20 TURNS' 
+            bulb.visible = true;
+            Mag.visible = true;
+                }
+            else if (dial.currentValue == 30) { 
+               
+                energy = 150;
+                post1.visible = false;
+                post3.visible = true;
+                post4.visibe = false;
+                post5.visible = false;
+                post2.visible = false;
+                post6.visible = false;
+                label2.text = '30 TURNS' 
+                bulb.visible = true;
+                Mag.visible = true;
+                    }
+            else if (dial.currentValue == 40) { 
+
+                post1.visible = false;
+                post3.visible = false;
+                post5.visible = true;
+                post2.visible = false;
+                post4.visibe = false;
+                post6.visible = false;
+                energy = 200;
+                label2.text = '40 TURNS' 
+                bulb.visible = true;
+                Mag.visible = true;
+                }
+
+            else if (dial.currentValue == 50) { 
+
+                energy = 250;
+                post1.visible = false;
+                post3.visible = false;
+                post4.visibe = false;
+                post5.visible = false;
+                post2.visible = false;
+                post6.visible = true;
+                label2.text = '50 TURNS' 
+                bulb.visible = true;
+                Mag.visible = true;
+            }
+            else if (dial.currentValue == 0) { 
+                energy = 0;
+                bulb.visible = false;
+                post1.visible = true;
+                post3.visible = false;
+                post4.visibe = false;
+                post5.visible = false;
+                post2.visible = false;
+                post6.visible = false;
+                Mag.visible = false;
+
+                label2.text = 'Set A valid value!'   
+            }
+            
+        });
+   
+    
+    const coil = new Container().center().mov(750,-250);
+
+    const top = new Rectangle({width:100, height:140, corner:20}).centerReg(coil);
+    
+    // [colors],[ratios], x0,y0, x1,y1 - x and y are for a line the gradient will follow
+    top.linearGradient([dark,grey,light,grey,dark],[0,.2,.5,.8,1], 0,0, 0,40);
+
+    const peg = new Rectangle(20,140).center(coil).mov(0,40);
+    peg.linearGradient([light,darker],[.5,1], 0,0, 20,0);
+    peg.visible = false;
+    top.visible =false;
+
+    const slat = new Rectangle(160,9,null,grey,2).ske(55); 
+    slat.linearGradient([grey,light,dark],[0,.3,.7], 0,0, 60,0);
+
+    
+    var post1 = new Tile(slat, 1, 10).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    var post2 = new Tile(slat, 1, 20).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    var post3 = new Tile(slat, 1, 30).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    var post4 = new Tile(slat, 1, 40).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    var post5 = new Tile(slat, 1, 50).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    var post6 = new Tile(slat, 1, 60).center(coil).loc(null, peg.y+peg.height).mov(-2);
+    // create and animate the electricity!
+
+    var zaps = new Container()
+        .sha(blue,0,0,20).addTo().bot().alp(0).animate({alpha:1}, 500);
+
+    loop(2, i=>{
+        new Squiggle({color:blue, points:6, controlType:"none", interactive:false}).addTo(zaps);
+    });
+
+    Ticker.add(()=>{
+        zaps.loop(zap=>{ // loop through children in zaps container
+            loop(zap.pointControls, (control, i, total)=>{ // loop squiggle points
+                if (i==0) control.loc(wire1).mov(70,20);
+                else if (i==total-1) control.loc(bulb).mov(100,190);
+                else {
+                    // x and y of top are inside coil so use localToGlobal
+                    var point = wire1.parent.localToGlobal(-500,50);
+                    var point2 = bulb.parent.localToGlobal(500,200);
+                    // find the x and y along a line between tops
+                    var x = point.x+(point2.x-point.x)*i/(total-1);
+                    var y = point.y+(point2.y-point.y)*i/(total-1);
+                    // randomize location of point based on energy
+                    control.loc(x+rand(-energy/2,energy/2), y+rand(energy,energy));
+                }
+            });
+            zap.update(); // update the squiggle when manually changing points
+        }); // end point loop
+    }); // end squiggle loop
+
+
+    var zaps2 = new Container()
+        .sha(blue,0,0,20).addTo().bot().alp(0).animate({alpha:1}, 500);
+
+    loop(2, i=>{
+        new Squiggle({color:pink, points:6, controlType:"none", interactive:false}).addTo(zaps2);
+    });
+
+    Ticker.add(()=>{
+        zaps2.loop(zap=>{ // loop through children in zaps container
+            loop(zap.pointControls, (control, i, total)=>{ // loop squiggle points
+                if (i==0) control.loc(bulb).mov(100,210);
+                else if (i==total-1) control.loc(wire2).mov(-80,15);
+                else {
+                    // x and y of top are inside coil so use localToGlobal
+                    var point = bulb.parent.localToGlobal(100,200);
+                    var point2 = wire2.parent.localToGlobal(100,200);
+                    // find the x and y along a line between tops
+                    var x = point.x+(point2.x-point.x)*i/(total-1);
+                    var y = point.y+(point2.y-point.y)*i/(total-1);
+                    // randomize location of point based on energy
+                    control.loc(x+rand(-energy/2,energy/2), y+rand(energy,energy));
+                }
+            });
+            zap.update(); // update the squiggle when manually changing points
+        }); // end point loop
+    }); // end squiggle loop
+
+
+
+    var label = new Label({
+        text:"You Can Increase The Current By Increasing The Number of Coil's turns",
+        size:30,
+        font:"courier",
+        color:"white",
+        rollColor:"red",
+        fontOptions:"italic bold",
+        
+     });
+     stage.addChild(label);
+     label.pos(400,50)
+
+     var label2 = new Label({
+        text:" With that Left Switch, You can Increase the number of turns",
+        size:25,
+        font:"courier",
+        color:"white",
+        rollColor:"blue",
+        fontOptions:"italic bold",
+        
+     });
+     stage.addChild(label2);
+    label2.mov(700,700);
+
+    var label3 = new Label({
+        text:"Control Switch",
+        size:20,
+        font:"courier",
+        color:"white",
+        rollColor:"blue",
+        fontOptions:"italic bold",
+        
+     });
+     stage.addChild(label3);
+     label3.mov(420,700);
+     
+
+     wire1 = new Squiggle({
+         color:grey, 
+         points:4,
+        length:80,
+        interactive: false,
+        rotation: 580
+        
+        })
+        .center(coil).mov(110,-190)
+
+        wire2 = new Squiggle({
+            color:grey, 
+            points:4,
+           length:80,
+           interactive: false,
+           rotation: 580
+           
+           })
+           .center(coil).mov(-50,-250).rot(520)
+        
+    }); 
+</script>
+
+
+</body>
+</html>

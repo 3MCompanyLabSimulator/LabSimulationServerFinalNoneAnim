@@ -1,0 +1,7 @@
+title :
+ Magnetic Effect Simulation Experiment
+
+description :
+in this Experiment we will see that the metals are strongly attracted by a magnetic force.
+The common ferromagnetic metals include iron, nickel, cobalt, and alloys such as steel.
+on the other side, we will see some materials aren't atrracted by the magnetic force like galss and wood

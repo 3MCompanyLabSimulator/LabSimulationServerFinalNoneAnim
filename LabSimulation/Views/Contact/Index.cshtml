@@ -1,0 +1,306 @@
+﻿@model LabSimulation.Models.gmail
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="/Content/Site/img/LabSimulator.jpg">
+    <div class="container">
+        <div class="hero-text text-white">
+            <h1>Lab Simulator</h1>
+            <p>
+                It is an interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+            </p>
+            <h2>Contact Us</h2>
+        </div>
+
+    </div>
+</section>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="spad">
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="contact">
+                    <h2 class="aboutus-title">Contact Us</h2>
+                    <div class="contact-text">
+                        We are happy to communicate with you to clarify everything you want
+                        <p>
+                            Lab Simulator it's interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                <div class="contact">
+                    <h2 class="aboutus-title">Contact Info</h2>
+                    <div class="contact-text">
+                        You Can Contact with us from :
+                        <div class="contact-info-area pt-3">
+                            <a href="mailto:3MComany@gmail.com" target="_blank" title="Gmail"> <i class="fab fa-google text-danger h4 mr-3"></i> </a>
+                            <a href="https://www.facebook.com/3M-For-Software-104414964629456" title="Facebook Page" target="_blank"> <i class="fab fa-facebook  text-primary h4 mr-3"></i></a>
+                            <a href="https://twitter.com/Software3m" target="_blank" title="Twitter"><i class="fab fa-twitter h4 mr-3" style="color:rgba(29,161,242,1.00)"></i></a>
+                            <a href="https://www.linkedin.com/in/3m-company-4528441ab/"><i class="fab fa-linkedin-in h4" target="_blank" style="color:#0077b5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------------- -->
+<section class="contacts4 cid-rZfuKR870O" id="contacts4-g">
+
+    <div class="main_wrapper">
+        <div class="b_wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="block offset-1 col-10 col-md-5  p-0">
+                        <div class="block ">
+                            <div class="contact-form-warp">
+                                <div class="section-title text-white text-left">
+                                    <h2>Get in touch</h2>
+
+                                </div>
+                                @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form", enctype = "multipart/form-data" }))
+                                {
+          
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input autocomplete="off" data-val="true" data-val-email="The From field is not a valid e-mail address." data-val-required="The From field is required." id="From" name="From" type="text" placeholder="Your E-mail" value="">
+                                            @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input autocomplete="off" id="Subject" name="Subject" type="text" value="" placeholder="Subject">
+                                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <textarea placeholder="Message" data-val="true" data-val-required="The Body field is required." id="Body" name="Body" type="text" value=""></textarea>
+                                            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="site-btn">Sent Message</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Map-->
+        <div class="google-map d-SM-none d-md-block">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800598.6013507897!2d31.638134988334407!3d28.183175374946572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1444c357043f1853%3A0xe64e2c0c449c8b68!2z2KfZhNmF2YbZitin!5e0!3m2!1sar!2seg!4v1589805259323!5m2!1sar!2seg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+    <div class="google-map2 d-SM-block d-md-none">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800598.6013507897!2d31.638134988334407!3d28.183175374946572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1444c357043f1853%3A0xe64e2c0c449c8b68!2z2KfZhNmF2YbZitin!5e0!3m2!1sar!2seg!4v1589805259323!5m2!1sar!2seg" width="100%" height="500vh" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+
+</section>
+
+<!----------------------------------------------------------------------------------------------------------------------------------- -->
+
+<section class=" testimonials5 section-team spad bg-light" id="testimonials5-i">
+
+    <div class="mbr-section article content10 section-team-header" id="content10-6">
+
+        <header class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">
+                Meet The Team
+            </h2>
+            <p> Every 3M-Team developer has proven discipline in development techniques that make projects successful in the long run (testing, docs, reviews, etc.). </p>
+        </header>
+
+        <hr class="line" style="width: 25%;">
+    </div>
+    <div class="text-overlay" style="opacity: 0.8; background-color: rgb(193, 193, 193);">
+    </div>
+
+    <div class="container">
+        <div class="row media-container-column align-center">
+
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/Rayan.jpg">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+                            I have a bachelor's degree in MIS, I was a trainee and team leader of a group in ITI Minia branch - Full Stack .NET Development, I have learned how to analyze and design a database and how to build an applications desktop, web and mobile, I hope to be a pioneer in the software development field.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mohamed Ahmed Rayan
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/mohamed.a.rayan.iti" target="_blank"> <i class="fab fa-facebook text-primary"></i></a>
+                            <a href="https://twitter.com/Mohamed63952619" target="_blank"><i class="fab fa-twitter " style="color:rgba(29,161,242,1.00)" target="_blank"></i></a>
+                            <a href="https://www.linkedin.com/in/mohamed-rayan-iti2020" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/mostafa2.PNG">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+                            I graduated from the Faculty of Science in Minia University, Egypt. I was in Computer Science Department.I hope to be a pioneer in technology field.I was a trainee in Information Technology Institute (ITI) - Minia branch-.net full stack.I have passion for learning and winning.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mostafa Mahmoud
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/profile.php?id=100011376076156" target="_blank"> <i class="fab fa-facebook  text-primary"></i></a>
+                            <a href="https://twitter.com/mostafael_naeem"><i class="fab fa-twitter" style="color:rgba(29,161,242,1.00)" target="_blank"></i></a>
+                            <a href="https://www.linkedin.com/in/mostafa-mahmoud-abdel-naeem-bb7594168/" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/Ezz4.jpg">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+                            An aspiring software developer, R&D Engineer, Lifetime learner, used to work in different fields, with analytical thinking, research skills, and scientific mentality. I decided to quit my job as a Mechanical Engineer and pursue my dream of working the job I wanted most.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mohamed Ezzeldien
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/Mhmdezzeldien" target="_blank"><i class="fab fa-facebook  text-primary"></i></a>
+                            <a href=""><i class="fab fa-twitter " style="color:rgba(29,161,242,1.00)"></i></a>
+                            <a href="https://www.linkedin.com/in/mohamedezzeldien" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->
+
+
+@if (TempData["SendSuccess"] != null)
+{
+    <script>
+        window.onload = function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Send successfully',
+                text: '@TempData["SendSuccess"]',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        }
+    </script>
+}

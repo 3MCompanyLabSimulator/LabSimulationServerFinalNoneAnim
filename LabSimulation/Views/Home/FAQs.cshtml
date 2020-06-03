@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "FAQs";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="page-info-section set-bg" data-setbg="/Content/Site/img/page-bg/FAQs.jpg">
+    <div class="container">
+        <div class="site-breadcrumb">
+            <a href="~/Home/Index">Home</a>
+            <span>Frequently Asked Questions</span>
+        </div>
+    </div>
+</div>
+
+<section class="elements-page spad ">
+    <div class="container">
+
+        <div class="element">
+            <div class="title-section mb-5 text-center col-12">
+                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <h5 class="mb-3">We are happy to answer all the questions about lab simulation</h5>
+                <p>
+                    <b> We have collected some questions for you that may help you in dealing with the Lab Simulation platform. </b>
+                </p>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <!-- Accordions -->
+                    <div id="accordion" class="accordion-area">
+                        <div class="panel">
+                            <div class="panel-header active" id="headingFour">
+                                <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse">What are the educational stages covered by the platform?</button>
+                            </div>
+                            <div id="collapse1" class="collapse show" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <p>The platform now covers some experiments in science for the preparatory stage in the Egyptian curriculum. The secondary curriculum will soon be covered.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header " id="headingSix">
+                                <button class="panel-link " data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">What devices do you support?</button>
+                            </div>
+                            <div id="collapse2" class="collapse show" aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    <p>A mobile platform works on all devices and web browsers, but we recommend using a computer or laptop browsers.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-header " id="headingFive">
+                                <button class="panel-link " data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">Will the curricula of some Arab countries be covered?</button>
+                            </div>
+                            <div id="collapse3" class="collapse show" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <p>Yes, some Arab countries' curricula will be covered.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <!-- Accordions -->
+                    <div id="accordion" class="accordion-area">
+                        <div class="panel">
+                            <div class="panel-header " id="headingFour">
+                                <button class="panel-link " data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    Is it a free platform?
+                                </button>
+                            </div>
+                            <div id="collapse4" class="collapse show" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <p>
+                                        Some of the experiments are free and others are by subscription as a premium account.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header " id="headingFive">
+                                <button class="panel-link " data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                    Is the platform available in Arabic and English?
+                                </button>
+                            </div>
+                            <div id="collapse5" class="collapse show" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <p>
+                                        No, a phallic platform is available in English, Soon a phallic platform will be available in both Arabic and English.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header " id="headingSix">
+                                <button class="panel-link " data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                                    How will the subscriptions be paid for a platform?
+                                </button>
+                            </div>
+                            <div id="collapse6" class="collapse show" aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    <p>Payment will be made either through an immediate or through a card available in some schools, libraries and science teachers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->

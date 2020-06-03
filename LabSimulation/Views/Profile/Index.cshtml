@@ -1,0 +1,455 @@
+﻿@model LabSimulation.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="/Content/Site/img/LabSimulator.jpg">
+    <div class="container">
+        <div class="hero-text text-white">
+            <h1>Lab Simulator</h1>
+            <p>
+                It is an interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+            </p>
+            <h2>Profile</h2>
+        </div>
+    </div>
+</section>
+
+
+<section class="categories-section spad">
+    <div class="container">
+        <div class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">Your Profile</h2>
+
+        </div>
+
+        <article class="row">
+            <aside class="col-md-4 pb-4" data-aos="fade-right">
+
+                <section class="list-group our-team-department" id="myDIV">
+                    <a href="#ProfileinfoSection"
+                       class="Actived btn list-group-item list-group-item-action list-group-item-light font-weight-normal our-team-department-item">
+                        <i class="fas fa-user"></i>
+                        <span class="ml-2 font-Color">Profile info</span>
+                    </a>
+
+                    @{
+                        if (Request.Cookies["Login"]["UserType"] != "Student")
+                        {
+
+                            <a href="#EditPersonalInfoSection"
+                               class="btn list-group-item list-group-item-action list-group-item-light font-weight-normal our-team-department-item">
+                                <i class="fas fa-user-edit"></i>
+                                <span class="ml-2 font-Color"> Edit personal info </span>
+                            </a>
+                            <a href="#EditSecurityInfoSection"
+                               class="btn list-group-item list-group-item-action list-group-item-light font-weight-normal our-team-department-item">
+                                <i class="fas fa-user-shield"></i>
+                                <span class="ml-2 font-Color"> Edit security info </span>
+                            </a>
+                            if (Request.Cookies["Login"]["IsPremium"] != "True")
+                            {
+                                <a href="#ChangePricePlanSection"
+                                   class="btn list-group-item list-group-item-action list-group-item-light font-weight-normal our-team-department-item">
+                                    <i class="fas fa-money-check-alt"></i>
+                                    <span class="ml-2 font-Color"> Change price plan </span>
+                                </a>
+                            }
+                        }
+                    }
+                </section>
+            </aside>
+
+            <section class="col-md-8" data-aos="fade-left" id="ProfileinfoSection">
+                <section class="row">
+
+                    <div class="col-md-8">
+                        <h6>First Name : @Html.DisplayFor(model => model.FirstName)</h6>
+                        <h6 class="mt-4">Last Name : @Html.DisplayFor(model => model.LastName)</h6>
+                        <h6 class="mt-4">User Name : @Html.DisplayFor(model => model.UserName)</h6>
+                        <h6 class="mt-4">Email Address : @Html.DisplayFor(model => model.Email)</h6>
+                        <h6 class="mt-4">User Type : @Html.DisplayFor(model => model.UserTypeAccount.Name)</h6>
+
+
+                        @if (Model.SchoolName != null)
+                        {
+                            <h6 class="mt-4">School Name : @Html.DisplayFor(model => model.SchoolName)</h6>
+
+                        }
+
+                        @if (Model.IsPremiumAccount == true)
+                        {
+                            <h6 class="mt-4">Price Plan : Premium</h6>
+                        }
+                        else
+                        {
+                            <h6 class="mt-3">Price Plan : Free</h6>
+                        }
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            @{
+                                if (Model.Image != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.Image);
+                                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                    <img id="blah" style="width:150px; height:150px;" src="@imgSrc" title="Profile Image" alt="Profile Image" class="rounded-circle img-responsive" />
+                                }
+                                else
+                                {
+
+                                    <img id="blah" style="width:150px; height:150px;" src="~/Content/Site/img/User/UserImage.png" title="Profile Image" alt="Profile Image" class="rounded-circle img-responsive" />
+
+                                }
+                            }
+                            <h6 class="mt-2">Upload a photo...</h6>
+                            @using (Html.BeginForm("UploudPhoto", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="file" accept="image/jpeg, image/png" onchange="readURL(this);" id="httpPostedFileBase" name="httpPostedFileBase" class="text-center mt-2 center-block file-upload">
+                                <input type="submit" value="Upload Photo" id="UploudSubmit" class="btn btn-success mt-2" disabled />
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="mt-5 mb-5 w-100" id="EditPersonalInfoSection" />
+
+
+                @{
+                    if (Request.Cookies["Login"]["UserType"] != "Student")
+                    {
+
+
+                        <section class="row">
+                            <div class="title-section mb-3 col-12">
+                                <h3 class="mb-4 text-center">Edit personal info</h3>
+
+
+                                @using (Html.BeginForm("EditPersonalInfo", "Profile", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+
+
+                                    <div class="form-group col-md-12">
+                                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control col-md-12" ,autocomplete="off"} })
+                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control",autocomplete="off" } })
+                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-12">
+                                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control",autocomplete="off" } })
+                                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-center">
+                                        <div class="d-inline-block">
+                                            <button type="submit" class="btn btn-warning text-white"> Edit personal info <i class="fas fa-user-edit"></i> </button>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <hr class="mt-5 mb-5 w-100" id="EditSecurityInfoSection" />
+
+                        <section class="row">
+                            <div class="title-section mb-3 col-12">
+                                <h3 class="mb-4 text-center">Edit security info </h3>
+
+
+                                @using (Html.BeginForm("EditSecurityInfo", "Profile", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    <div class="form-group col-md-12">
+                                        <label for="OldPassword" class="control-label col-md-4">Old Password</label>
+                                        <div class="col-md-12">
+                                            <input class="form-control" type="password" name="OldPassword" id="OldPassword" onblur="CheckIsOldPassword()" />
+                                            <span class="StatusOldPassword text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-12">
+                                        <label for="ConfirmPassword" class="control-label col-md-4">Confirm Password</label>
+                                        <div class="col-md-12">
+                                            <input class="form-control" type="password" name="ConfirmPassword" id="ConfirmPassword" onblur="IsConfirmPassword()" />
+                                            <span class="StatusConfirmPassword text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-center">
+                                        <div class="d-inline-block">
+                                            <a class="btn btn-warning text-white" id="submitButton" onclick="btnSubmit()"> Edit security info <i class="fas fa-user-edit"></i></a>
+
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+
+                        </section>
+
+
+                        <hr class="mt-5 mb-5 w-100" id="ChangePricePlanSection" />
+
+
+                        if (Request.Cookies["Login"]["IsPremium"] != "True")
+                        {
+                            if (Request.Cookies["Login"]["UserType"] == "Person")
+                            {
+                                <section class="row">
+                                    <div class="title-section mb-3 col-12">
+                                        <h3 class="mb-4 text-center"> Change price plan </h3>
+
+
+                                        @using (Html.BeginForm("ChangePricePlan", "Profile", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-row d-flex justify-content-center">
+                                                <div class="columns">
+                                                    <ul class="price">
+                                                        <li class="header">Premium</li>
+                                                        <li class="grey"> 99 L.E </li>
+                                                        <li class="pragraphe">Unlimited experiences</li>
+                                                        <li class="grey">
+                                                            <div class="checkbox Check-toolbar">
+                                                                @Html.EditorFor(model => model.IsPremiumAccount)
+                                                                <label for="IsPremiumAccount" onclick="PersonPremium()" id="IsSelected">Unselect</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <div class="d-inline-block">
+                                                    <button type="submit" id="submitPricePlan" class="btn btn-warning text-white mt-2" disabled> Change price plan <i class="fas fa-money-check-alt"></i> </button>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    </div>
+
+                                </section>
+
+                            }
+                            else if (Request.Cookies["Login"]["UserType"] == "School")
+                            {
+
+                                <section class="row">
+                                    <div class="title-section mb-3 col-12">
+                                        <h3 class="mb-4 text-center"> Change price plan </h3>
+
+
+                                        @using (Html.BeginForm("ChangePricePlan", "Profile", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-row d-flex justify-content-center">
+                                                <div class="columns">
+                                                    <ul class="price">
+                                                        <li class="header">Premium</li>
+                                                        <li class="grey"> 999 L.E </li>
+                                                        <li class="pragraphe">Unlimited experiences</li>
+                                                        <li class="pragraphe">Unlimited students</li>
+                                                        <li class="grey">
+                                                            <div class="checkbox Check-toolbar">
+                                                                @Html.EditorFor(model => model.IsPremiumAccount)
+                                                                <label for="IsPremiumAccount" onclick="SchoolPremium()" id="IsSelected">Unselect</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <div class="d-inline-block">
+                                                    <button type="submit" id="submitPricePlan" class="btn btn-warning text-white mt-2" disabled> Change price plan <i class="fas fa-money-check-alt"></i> </button>
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    </div>
+
+                                </section>
+
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+
+<script>
+
+    function PersonPremium() {
+        var isSelected = document.getElementById("IsSelected");
+        if (isSelected.innerHTML == "Unselect") {
+            isSelected.innerText = "Selected";
+            $('#submitPricePlan').removeAttr('disabled');
+            MyWindow = window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L4HRB7VA6GLH2', 'MyWindow', 'width=650,height=650');
+            return false;
+        }
+        else {
+            isSelected.innerText = "Unselect";
+            $("#submitPricePlan").attr("disabled", true);
+
+        }
+    }
+
+    function SchoolPremium() {
+        var isSelected = document.getElementById("IsSelected");
+        if (isSelected.innerHTML == "Unselect") {
+            isSelected.innerText = "Selected";
+            $('#submitPricePlan').removeAttr('disabled');
+            MyWindow = window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HA54YKSCLUK6C', 'MyWindow', 'width=650,height=650');
+            return false;
+        }
+        else {
+            isSelected.innerText = "Unselect";
+            $("#submitPricePlan").attr("disabled", true);
+
+        }
+    }
+
+    function IsConfirmPassword() {
+        var isConfirmPassword = $("#Password").val() === $("#ConfirmPassword").val();
+        if (isConfirmPassword == true) {
+            $(".StatusConfirmPassword").html('');
+            return true;
+        }
+        else {
+
+            $(".StatusConfirmPassword").html(' The passwords do not match. ');
+
+            return false;
+        }
+    }
+
+
+
+     var isOldPassword = true;
+
+    function CheckIsOldPassword() {
+
+        $.post("@Url.Action("CheckIsOldPassword", "Profile")",
+            {
+                OldPassword: $("#OldPassword").val(),
+                Id: $("#ID").val()
+            },
+
+            function (data) {
+
+                if (data == 1) {
+                    $(".StatusOldPassword").html('');
+                    isOldPassword = true;
+                }
+                else {
+                    $(".StatusOldPassword").html(' That password is not the old password. ');
+                    isOldPassword = false;
+                }
+            });
+
+        return isOldPassword;
+    }
+
+    function btnSubmit() {
+
+        if (CheckIsOldPassword() && IsConfirmPassword()) {
+
+            var _form = $("#submitButton").closest("form");
+            _form.submit();
+        }
+
+    };
+
+</script>
+
+
+
+@section Scripts {
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                    $('#UploudSubmit').removeAttr('disabled');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myDIV a').click(function () {
+                $('a').removeClass("Actived");
+                $(this).addClass("Actived");
+            });
+        });
+    </script>
+
+}

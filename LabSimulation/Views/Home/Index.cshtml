@@ -1,0 +1,375 @@
+﻿@using LabSimulation.Models
+@model HomeIndexVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="/Content/Site/img/LabSimulator.jpg">
+    <div class="container">
+        <div class="hero-text text-white">
+            <h1>Lab Simulator</h1>
+            <p>
+                It is an interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+            </p>
+        </div>
+
+        <div class="text-center pt-5">
+            @if (Request.Cookies["Login"] == null)
+            {
+                <a href="~/Users/SignUp" class="site-btn-p">Register Now</a>
+            }
+            </div>
+    </div>
+</section>
+<!-- Hero section end -->
+<!-- Educational Stages section -->
+
+<section class="categories-section spad">
+    <div class="container mt-5">
+        <div class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">Experiments For Educational Stages</h2>
+            <p>
+                The platform now covers some experiments in science for the preparatory and Primary stages in the Egyptian curriculum.<br /> The secondary curriculum will soon be covered.
+            </p>
+        </div>
+        <div class="row">
+
+            <!-- Educational Stages -->
+            @foreach (var item in Model.EducationalLeve_CountExperience)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="categorie-item">
+                        <div class="ci-thumb set-bg" data-setbg="@item.ImageLevelPath"></div>
+                        <div class="ci-text">
+                            <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+                            <span>@Html.DisplayFor(modelItem => item.CountExperience) Experiments</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Educational Stages end -->
+<!-- Experiment section -->
+<section class="spad">
+    <section class="course-section">
+        <div class="container">
+            <div class="title-section mb-5 text-center col-12">
+                <h2 class="mb-4">Laboratory Experiments</h2>
+                <p>
+                    Here are the most experiments that have been admired by teachers and experts, and and we would like to highly recommend it to you to try it.
+                </p>
+            </div>
+        </div>
+        <div class="course-warp">
+            <ul class="course-filter controls">
+                <li class="control active" data-filter="all">All</li>
+                @foreach (var item in Model.EducationalLeve_CountExperience)
+                {
+
+                    <li class="control" data-filter=".@item.Name.Replace(' ', '_')">@Html.DisplayFor(modelItem => item.Name)</li>
+                }
+            </ul>
+            <div class="row course-items-area">
+
+                <!-- course -->
+                @foreach (var item in Model.ExperienceInfo)
+                {
+
+                    <div class="mix col-lg-3 col-md-4 col-sm-6 @item.EducationalLevelName.Replace(' ', '_')">
+                        <a class="LinkExperience" href="/Experiences/Details/@item.ID?subjectID=@item.SubjectID&educationalYearID=@item.EducationalYearID&educationalLevelID=@item.EducationalLevelID">
+                            <div class="course-item">
+                                <div class="course-thumb set-bg" data-setbg="@item.Image">
+                                    <div class="price">@item.Type </div>
+                                </div>
+                                <div class="course-info">
+                                    <div class="course-text">
+                                        <h5>@item.ExperienceName</h5>
+                                        <div class="students">@item.SubjectName</div>
+                                        <div class="students">@item.EducationalYearName</div>
+                                        <div class="students">@item.EducationalLevelName</div>
+
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                }
+            </div>
+
+
+        </div>
+        <div class="text-center pt-5">
+            <a href="~/Experiences/Index" class="site-btn">Experiments Page</a>
+        </div>
+    </section>
+</section>
+<!-- course section end -->
+<!----------------------------------------------------------------------------------------------------------------------------------------- -->
+@*<section class="container-fluid bg-light spad">
+    <div class="container">
+         Developer Section Start 
+
+        <section class="site-section">
+            <section class="container">
+                <article class="row">
+                    <header class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> What experts say about the site ? </h2>
+                    </header>
+                </article>
+                <section class="row">
+                    <section class="col-md-12 block-3 ">
+                        <article class="hidden-prev-next nonloop-block-3 owl-carousel">
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Developer/Rayan.jpg" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Mohamed Rayan</p>
+                            </article>
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Developer/Ezz4.jpg" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Mohamed Ezzeldien</p>
+                            </article>
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Developer/mostafa2.PNG" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Mostafa Mahmoud</p>
+                            </article>
+
+                        </article>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+         Developer Section End 
+        <div class="text-center pt-5">
+            <a href="~/About/Index" class="site-btn">About Page</a>
+        </div>
+    </div>
+</section>*@
+<!----------------------------------------------------------------------------------------------------------------------------------------- -->
+<!----------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+<section class=" testimonials5 section-team spad" id="testimonials5-i">
+
+    <div class="mbr-section article content10 section-team-header" id="content10-6">
+
+        <header class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">
+                Meet The Team
+            </h2>
+            <p> Every 3M-Team developer has proven discipline in development techniques that make projects successful in the long run (testing, docs, reviews, etc.). </p>
+        </header>
+
+        <hr class="line" style="width: 25%;">
+    </div>
+    <div class="text-overlay" style="opacity: 0.8; background-color: rgb(193, 193, 193);">
+    </div>
+
+    <div class="container">
+        <div class="row media-container-column align-center">
+
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/Rayan.jpg">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+                            I have a bachelor's degree in MIS, I was a trainee and team leader of a group in ITI Minia branch - Full Stack .NET Development, I have learned how to analyze and design a database and how to build an applications desktop, web and mobile, I hope to be a pioneer in the software development field.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mohamed Ahmed Rayan
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/mohamed.a.rayan.iti" target="_blank"> <i class="fab fa-facebook text-primary"></i></a>
+                            <a href="https://twitter.com/Mohamed63952619" target="_blank"><i class="fab fa-twitter " style="color:rgba(29,161,242,1.00)" target="_blank"></i></a>
+                            <a href="https://www.linkedin.com/in/mohamed-rayan-iti2020" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/mostafa2.PNG">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+                            I graduated from the Faculty of Science in Minia University, Egypt. I was in Computer Science Department.I hope to be a pioneer in technology field.I was a trainee in Information Technology Institute (ITI) - Minia branch-.net full stack.I have passion for learning and winning.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mostafa Mahmoud
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/profile.php?id=100011376076156" target="_blank"> <i class="fab fa-facebook  text-primary"></i></a>
+                            <a href="https://twitter.com/mostafael_naeem"><i class="fab fa-twitter" style="color:rgba(29,161,242,1.00)" target="_blank"></i></a>
+                            <a href="https://www.linkedin.com/in/mostafa-mahmoud-abdel-naeem-bb7594168/" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mbr-testimonial align-center col-12 col-md-4">
+                <div class="panel-item">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="~/Content/Site/img/Developer/Ezz4.jpg">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style text-white display-7">
+
+                            An aspiring software developer, R&D Engineer, Lifetime learner, used to work in different fields, with analytical thinking, research skills, and scientific mentality. I decided to quit my job as a Mechanical Engineer and pursue my dream of working the job I wanted most.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name font-weight-bold h6" style="color:#381044">
+                            Mohamed Ezzeldien
+                        </div>
+                        <small class="mbr-author-desc font-weight-bold h6" style="color:#381044">
+                            Developer
+                        </small>
+                        <div class="link-concat">
+                            <a href="https://www.facebook.com/Mhmdezzeldien" target="_blank"><i class="fab fa-facebook  text-primary"></i></a>
+                            <a href=""><i class="fab fa-twitter " style="color:rgba(29,161,242,1.00)"></i></a>
+                            <a href="https://www.linkedin.com/in/mohamedezzeldien" target="_blank"><i class="fab fa-linkedin-in" style="color:#0077b5"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center pt-5">
+            <a href="~/Contact/Index" class="site-btn">Contact Page</a>
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+                        
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->
+
+

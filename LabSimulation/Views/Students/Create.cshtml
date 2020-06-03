@@ -1,0 +1,313 @@
+﻿@model LabSimulation.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="page-info-section set-bg" data-setbg="/Content/Site/img/LabSimulator2.jpg">
+    <div class="container">
+        <div class="site-breadcrumb">
+            <a href="~/Students/Index">Students list</a>
+            <span>Add new student</span>
+        </div>
+    </div>
+</div>
+
+<section class="categories-section spad">
+    <div class="container">
+        <div class="title-section mb-5 text-center col-12">
+            <h2>Add Student</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+
+                @using (Html.BeginForm("Create", "Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" ,autocomplete="off"} })
+                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control",autocomplete="off" } })
+                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group d-none">
+                            @Html.LabelFor(model => model.SchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @{
+                                    string schoolname = Request.Cookies["Login"]["SchoolName"];
+
+                                    <input type="text" name="SchoolName" id="SchoolName" value="@schoolname" />
+                                }
+
+                                @Html.ValidationMessageFor(model => model.SchoolName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",autocomplete="off" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-md-12">
+                                <label for="httpPostedFileBase"> Upload Image : </label>
+                                <input type="file" accept="image/jpeg, image/png" onchange="readURL(this);" id="httpPostedFileBase" name="httpPostedFileBase" />
+                                <img id="blah" height="150px" width="150px" src="~/Content/Site/img/Students/student.png" title="Student Image" alt="Student Image" class="rounded-circle img-responsive" />
+
+                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group d-none">
+                            @Html.LabelFor(model => model.IsConfirm, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.IsConfirm)
+                                    @Html.ValidationMessageFor(model => model.IsConfirm, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-none">
+                            @Html.LabelFor(model => model.IsPremiumAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                <div class="checkbox">
+                                    @if (Request.Cookies["Login"]["IsPremium"] == "True")
+                                    {
+                                        <input checked="checked" id="IsPremiumAccount" name="IsPremiumAccount" type="checkbox" value="True" />
+                                    }
+                                    else
+                                    {
+                                        <input id="IsPremiumAccount" name="IsPremiumAccount" type="checkbox" value="False" />
+                                    }
+
+                                    @Html.ValidationMessageFor(model => model.IsPremiumAccount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-none">
+                            @Html.LabelFor(model => model.SchoolID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @{
+                                    int SchoolID = int.Parse(Request.Cookies["Login"]["UserID"]);
+                                    <input type="number" name="SchoolID" id="SchoolID" value="@SchoolID" />
+                                }
+                                @Html.ValidationMessageFor(model => model.SchoolID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group d-none">
+                            @Html.LabelFor(model => model.UserTypeID, "UserTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                <input type="number" name="UserTypeID" id="UserTypeID" value="3" />
+                                @Html.ValidationMessageFor(model => model.UserTypeID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group text-center">
+                            <div class="d-inline-block">
+                                <button type="submit" class="btn btn-success text-white"> Add student <i class="fas fa-user-plus"></i> </button>
+                            </div>
+                            |
+                            <div class="d-inline-block">
+                                <button type="reset" class="btn btn-danger text-white"> Clear Form <i class="fas fa-eraser"></i> </button>
+                            </div>
+                            |
+                            <div class="d-inline-block">
+                                <a href="@Url.Action("Index","Students")" class="btn btn-dark text-white"> Back to List <i class="fas fa-arrow-left"></i> </a>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join us now!</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->
+
+@if (TempData["MaxStudents"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'warning',
+                title: '@TempData["MaxStudents"]',
+                text: 'Dear User, you have to switch your account to premium and you will enjoy the premium features',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Change Price Plan',
+                cancelButtonText: 'Back to List'
+            }).then((result) => {
+                if (result.value) {
+                   window.location.href = "/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection";
+                }
+                else {
+                    window.location.href = "Index";
+                }
+            });
+                }
+    </script>
+}
+
+
+@if (TempData["AnotherStudent"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                icon: 'question',
+                title:'@TempData["AnotherStudent"]',
+                text: 'If you want to add another student, click on Add another student. If you do not want, you will return to the list of students',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonColor: '#000',
+                confirmButtonText: 'Add another student',
+                cancelButtonText: 'Back to List'
+            }).then((result) => {
+                if (result.value) {
+                    $('#Email').val('');
+                    $('#UserName').val('');
+                }
+                else {
+                    window.location.href = "Index";
+                }
+            });
+                }
+    </script>
+}
+
+
+@section Scripts {
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

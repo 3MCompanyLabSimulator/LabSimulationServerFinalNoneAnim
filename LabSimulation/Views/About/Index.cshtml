@@ -1,0 +1,257 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="/Content/Site/img/LabSimulator.jpg">
+    <div class="container">
+        <div class="hero-text text-white">
+            <h1>Lab Simulator</h1>
+            <p>
+                It is an interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+            </p>
+            <h2>About Us</h2>
+        </div>
+
+    </div>
+</section>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+<section class="spad">
+    <div class="mt-5 mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aboutus">
+                        <h2 class="aboutus-title">About Us</h2>
+                        <p class="aboutus-text">Our goal is to provide students with the opportunity to interact actively with the educational content provided in order to transform the student from receiving information and only to active student who conducts experiments and interactive activities on his own and to discover equations and laws,</p>
+                        <div class="collapse" id="collapseExample">
+                            <p class="aboutus-text">using virtual laboratory technology and thus provide a lot of materials and laboratory equipment and also allow students to interactive learning at any time Anywhere</p>
+                        </div>
+                        <a class="aboutus-more" id="more" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="togglemorless()"> Read More</a>
+                        <a class="aboutus-more" id="less" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="visibility: hidden;" onclick="toggleless()"> Read Less</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aboutus-banner">
+                        <img src="/Content/Site/img/persondoc.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="feature">
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <i class="fas fa-atom atomFont"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>What are the educational stages covered by the platform? </h4>
+                                    <p>The platform now covers some experiments in science for the preparatory stage in the Egyptian curriculum. The secondary curriculum will soon be covered</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <i class="fas fa-atom atomFont"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Is it a free platform?</h4>
+                                    <p>Some of the experiments are free and others are by subscription during the term</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="clearfix">
+                                <div class="iconset">
+                                    <i class="fas fa-atom atomFont"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>How will the subscriptions be paid for a platform?</h4>
+                                    <p>Payment will be made either through an immediate or through a card available in some schools</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="container">
+        <article class="row">
+            <header class="title-section mb-5 text-center col-12">
+                <h2 class="mb-4"> Our Feature </h2>
+            </header>
+        </article>
+
+        <div class="card-deck myDivCard">
+            <div class="card mycard">
+
+                <div class="card-body">
+                    <h5 class="card-title">The Default Coefficient <img src="~/Content/Site/img/feature-icon-1.png" class="card-img-top" alt="..."></h5>
+                    <p class="card-text text-dark">Virtual Labs allow students to conduct all practical experiments in science, chemistry, physics and biology</p>
+                </div>
+            </div>
+            <div class="card mycard">
+
+                <div class="card-body">
+                    <h5 class="card-title">Interactive Activities<img src="~/Content/Site/img/feature-icon-2.png" class="card-img-top" alt="..."></h5>
+                    <p class="card-text text-dark">Each experiment includes interactive activities.</p>
+                </div>
+            </div>
+            <div class="card mycard">
+                <div class="card-body">
+                    <h5 class="card-title">Extra Information<img src="~/Content/Site/img/feature-icon-3.png" class="card-img-top" alt="..."></h5>
+                    <p class="card-text text-dark">Life applications and enriching information help to link practical experiences with life reality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!----------------------------------------------------------------------------------------------------------------------------------------- -->
+@*<section class="container-fluid bg-light spad">
+    <div class="container">
+         Developer Section Start 
+
+        <section class="site-section">
+            <section class="container">
+                <article class="row">
+                    <header class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> What experts say about the site ? </h2>
+                    </header>
+                </article>
+                <section class="row">
+                    <section class="col-md-12 block-3 ">
+                        <article class="hidden-prev-next nonloop-block-3 owl-carousel">
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Expert/Dr.AhmedAlaa.jpg" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Dr. Ahmed Alaa</p>
+                            </article>
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Developer/Ezz4.jpg" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Dr. Ramy </p>
+                            </article>
+
+                            <article class="develop">
+                                <blockquote>
+                                    <img src="~/Content/Site/img/Expert/Eng.MrihanMohamed.png" alt="Image"
+                                         class="img-fluid w-25 mb-4 rounded-circle">
+                                    <p>
+                                        &ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
+                                        voluptatem consectetur quam tempore
+                                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur
+                                        ducimus. Minus ratione sit quaerat
+                                        unde.&rdquo;
+                                    </p>
+                                </blockquote>
+                                <p>&mdash; Eng. Mrihan Mohamed</p>
+                            </article>
+
+                        </article>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+         Developer Section End 
+
+    </div>
+</section>*@
+<!----------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->

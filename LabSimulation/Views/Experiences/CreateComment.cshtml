@@ -1,0 +1,159 @@
+﻿@model LabSimulation.Models.Comment
+@{
+    ViewBag.Title = "CreateComment";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="page-info-section set-bg" data-setbg="/Content/Site/img/LabSimulator2.jpg">
+    <div class="container">
+        <div class="site-breadcrumb">
+            <a href="~/Experiences/Details/@TempData["id"]?subjectID=@TempData["subjectID"]&educationalYearID=@TempData["educationalYearID"]&educationalLevelID=@TempData["educationalLevelID"]">Back to experiment</a>
+            <span>
+                Add Comment
+            </span>
+        </div>
+    </div>
+</div>
+
+<section class="categories-section spad">
+    <div class="container">
+        <div class="title-section mb-5 text-center col-12">
+            <h2>Add Comment</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group d-none">
+
+                        @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @{
+                                if (Request.Cookies["Login"] != null)
+                                {
+                                    string UserID = Request.Cookies["Login"]["UserID"];
+                                    <input type="text" name="UserID" id="UserID" value="@UserID" />
+                                }
+                                else
+                                {
+                                    <input type="text" name="UserID" id="UserID" value="" />
+
+                                }
+
+                            }
+                            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            <div class="comment-area">
+                                <textarea class="form-control" cols="20" data-val="true" data-val-regex="Your comment contains inappropriate words. Please be polite in your comment to accept your comment" data-val-regex-pattern="^((?!a7a|fuck|stupid|dog|donkey)[\s\S])*$" data-val-required="You can't add an empty comment. Please enter your comment if you wish" id="Comments" name="Comments" placeholder="what is your view?" rows="4"></textarea>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group text-center">
+                        <div class="d-inline-block">
+                            <button type="submit" class="btn btn-success text-white"> Add comment </button>
+                        </div>
+                        |
+                        <div class="d-inline-block">
+                            <a href="~/Experiences/Details/@TempData["id"]?subjectID=@TempData["subjectID"]&educationalYearID=@TempData["educationalYearID"]&educationalLevelID=@TempData["educationalLevelID"]" class="btn btn-dark text-white"> Back to experiment <i class="fas fa-arrow-left"></i> </a>
+                        </div>
+                    </div>
+
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4">
+                                
+                            </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

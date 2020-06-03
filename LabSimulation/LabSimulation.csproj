@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{248F7A22-27E2-41A4-822D-5A1EDE437BDB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LabSimulation</RootNamespace>
+    <AssemblyName>LabSimulation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ExperiencesController.cs" />
+    <Compile Include="Controllers\PageNotFoundController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\gmail.cs" />
+    <Compile Include="Models\UserTypeAccount.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Comments_Users.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_User.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Extensions.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EducationalLevel.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EducationalYear.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Experience.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Favorite.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\HomeIndexVM.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelLabSimulation.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLabSimulation.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelLabSimulation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelLabSimulation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLabSimulation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subject.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_EducationalLeve_CountExperience.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_ExperienceInfo.cs">
+      <DependentUpon>ModelLabSimulation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Animation\aos.css" />
+    <Content Include="Content\Animation\aos.js" />
+    <Content Include="Content\Animation\scriptAnimation.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome\css\all.css" />
+    <Content Include="Content\font-awesome\css\all.min.css" />
+    <Content Include="Content\font-awesome\css\brands.css" />
+    <Content Include="Content\font-awesome\css\brands.min.css" />
+    <Content Include="Content\font-awesome\css\fontawesome.css" />
+    <Content Include="Content\font-awesome\css\fontawesome.min.css" />
+    <Content Include="Content\font-awesome\css\regular.css" />
+    <Content Include="Content\font-awesome\css\regular.min.css" />
+    <Content Include="Content\font-awesome\css\solid.css" />
+    <Content Include="Content\font-awesome\css\solid.min.css" />
+    <Content Include="Content\font-awesome\css\svg-with-js.css" />
+    <Content Include="Content\font-awesome\css\svg-with-js.min.css" />
+    <Content Include="Content\font-awesome\css\v4-shims.css" />
+    <Content Include="Content\font-awesome\css\v4-shims.min.css" />
+    <Content Include="Content\font-awesome\js\all.js" />
+    <Content Include="Content\font-awesome\js\all.min.js" />
+    <Content Include="Content\font-awesome\js\brands.js" />
+    <Content Include="Content\font-awesome\js\brands.min.js" />
+    <Content Include="Content\font-awesome\js\conflict-detection.js" />
+    <Content Include="Content\font-awesome\js\conflict-detection.min.js" />
+    <Content Include="Content\font-awesome\js\fontawesome.js" />
+    <Content Include="Content\font-awesome\js\fontawesome.min.js" />
+    <Content Include="Content\font-awesome\js\regular.js" />
+    <Content Include="Content\font-awesome\js\regular.min.js" />
+    <Content Include="Content\font-awesome\js\solid.js" />
+    <Content Include="Content\font-awesome\js\solid.min.js" />
+    <Content Include="Content\font-awesome\js\v4-shims.js" />
+    <Content Include="Content\font-awesome\js\v4-shims.min.js" />
+    <Content Include="Content\font-awesome\sprites\brands.svg" />
+    <Content Include="Content\font-awesome\sprites\regular.svg" />
+    <Content Include="Content\font-awesome\sprites\solid.svg" />
+    <Content Include="Content\font-awesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\font-awesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\font-awesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\PageNotFound\StyleSheet.css" />
+    <Content Include="Content\Preloder\preloder.css" />
+    <Content Include="Content\Particles\styleParticles.css" />
+    <Content Include="Content\Particles\app.js" />
+    <Content Include="Content\Particles\particles.min.js" />
+    <Content Include="Content\Preloder\preloder.js" />
+    <Content Include="Content\SignIn\css\aos.css" />
+    <Content Include="Content\SignIn\css\main.css" />
+    <Content Include="Content\SignIn\css\styleParticles.css" />
+    <Content Include="Content\SignIn\css\util.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="Content\SignIn\images\Untitled-1-Copy.jpg" />
+    <Content Include="Content\SignIn\js\aos.js" />
+    <Content Include="Content\SignIn\js\app.js" />
+    <Content Include="Content\SignIn\js\main.js" />
+    <Content Include="Content\SignIn\js\map-custom.js" />
+    <Content Include="Content\SignIn\js\particles.min.js" />
+    <Content Include="Content\SignIn\js\scriptAnimation.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\SignIn\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\SignIn\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\SignUp\css\bootstrap.css" />
+    <Content Include="Content\SignUp\css\opensans-font.css" />
+    <Content Include="Content\SignUp\css\PriceTable.css" />
+    <Content Include="Content\SignUp\css\style.css" />
+    <Content Include="Content\SignUp\css\styleButtons.css" />
+    <Content Include="Content\SignUp\css\styleHeader.css" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\css\material-design-iconic-font.css" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\LICENSE.txt" />
+    <Content Include="Content\SignUp\images\PanerSign.jpg" />
+    <Content Include="Content\SignUp\images\PanerSign2.jpg" />
+    <Content Include="Content\SignUp\images\Person-icon.png" />
+    <Content Include="Content\SignUp\images\person.png" />
+    <Content Include="Content\SignUp\images\School-icon.png" />
+    <Content Include="Content\SignUp\images\school.png" />
+    <Content Include="Content\SignUp\images\Untitled-1.jpg" />
+    <Content Include="Content\SignUp\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\SignUp\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\SignUp\js\jquery.steps.js" />
+    <Content Include="Content\SignUp\js\main.js" />
+    <Content Include="Content\SignUp\js\ReplaceContent.js" />
+    <Content Include="Content\SignUp\vendor\bootrap\css\bootstrap.min.css" />
+    <Content Include="Content\SignUp\vendor\bootrap\js\bootstrap.min.js" />
+    <Content Include="Content\Site\css\all.css" />
+    <Content Include="Content\Site\css\bootstrap.min.css" />
+    <Content Include="Content\Site\css\font-awesome.min.css" />
+    <Content Include="Content\Site\css\owl.carousel.css" />
+    <Content Include="Content\Site\css\style.css" />
+    <Content Include="Content\Site\icon-fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Site\img\1level.jpg" />
+    <Content Include="Content\Site\img\Developer\Ezz4.jpg" />
+    <Content Include="Content\Site\img\Developer\mostafa2.PNG" />
+    <Content Include="Content\Site\img\Developer\Rayan.jpg" />
+    <Content Include="Content\Site\img\EducationLevel\1level.jpg" />
+    <Content Include="Content\Site\img\EducationLevel\2level.jpg" />
+    <Content Include="Content\Site\img\EducationLevel\3level.jpg" />
+    <Content Include="Content\Site\img\Expert\Dr.AhmedAlaa.jpg" />
+    <Content Include="Content\Site\img\Expert\Eng.MrihanMohamed.png" />
+    <Content Include="Content\Site\img\feature-icon-1.png" />
+    <Content Include="Content\Site\img\feature-icon-2.png" />
+    <Content Include="Content\Site\img\feature-icon-3.png" />
+    <Content Include="Content\Site\img\flask-png.png" />
+    <Content Include="Content\Site\img\LabSimulator2.jpg" />
+    <Content Include="Content\Site\img\LabSimulator.jpg" />
+    <Content Include="Content\Site\img\page-bg\FAQs.jpg" />
+    <Content Include="Content\Site\img\page-bg\PP.jpg" />
+    <Content Include="Content\Site\img\PageNotFound\Pagenotfound.jpg" />
+    <Content Include="Content\Site\img\persondoc.jpg" />
+    <Content Include="Content\Site\img\Students\student.png" />
+    <Content Include="Content\Site\img\User\UserImage.png" />
+    <Content Include="Content\Site\js\all.js" />
+    <Content Include="Content\Site\js\bootstrap.min.js" />
+    <Content Include="Content\Site\js\circle-progress.min.js" />
+    <Content Include="Content\Site\js\JavaScriptSearch.js" />
+    <Content Include="Content\Site\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\Site\js\main.js" />
+    <Content Include="Content\Site\js\map.js" />
+    <Content Include="Content\Site\js\mixitup.min.js" />
+    <Content Include="Content\Site\js\owl.carousel.min.js" />
+    <Content Include="Content\Site\js\scriptHome.js" />
+    <Content Include="Content\Site\js\scriptStudent.js" />
+    <Content Include="Content\SweetAlert\sweetalert2.all.js" />
+    <Content Include="Content\SweetAlert\sweetalert2.all.min.js" />
+    <Content Include="Content\SweetAlert\sweetalert2.css" />
+    <Content Include="Content\SweetAlert\sweetalert2.js" />
+    <Content Include="Content\SweetAlert\sweetalert2.min.css" />
+    <Content Include="Content\SweetAlert\sweetalert2.min.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\analytics-frame.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\Capture.PNG" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\data\css\output.min.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\data\js\5foJ3dEm39k.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\data\js\data.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\data\js\frame.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\data\js\paths.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\scripts\app.min.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\stylesheets\main.min.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\Image.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\meta.xml" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\mobile\5iMThnlVYQl_DX118_DY118_CX63_CY88.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\mobile\5n0h9rAK2j8_DX576_DY576_CX432_CY216.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\mobile\67gsjAxMiHy_DX550_DY550_CX400_CY390.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\blank.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\frame.xml" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\story.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\thumbnail.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\user.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_html5.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\analytics-frame.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\Capture.PNG" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\css\output.min.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\5foJ3dEm39k.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\5YqDdNJGqlA.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\6AWkESuEJAS.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\6f3b3tzTM25.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\6fRBCoNWVEZ.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\6HrvzJaR8Tk.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\6Tc24C8zUoi.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\data.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\frame.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\data\js\paths.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\scripts\app.min.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\stylesheets\main.min.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\Image.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\meta.xml" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\5n0h9rAK2j8_DX576_DY576_CX432_CY216.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\62Uvz0NLbyd_DX200_DY200_CX134_CY117.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\62Uvz0NLbyd_DX202_DY202_CX151_CY132.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\67YAUBgwDzf_DX1280_DY1280_CX640_CY320.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6hoRXbIBz7b_DX272_DY272_CX165_CY115.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6hoRXbIBz7b_DX272_DY272_CX203_CY142.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6jmp1QyhJx7_DX188_DY188_CX113_CY141.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6k96sE42OZn_DX280_DY280_CX166_CY124.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6k96sE42OZn_DX280_DY280_CX210_CY156.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6TXvFMcs09Z_DX260_DY260_CX188_CY114.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6TXvFMcs09Z_DX262_DY262_CX196_CY119.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6YR6pzFOPI7_DX180_DY180_CX108_CY108.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\6YR6pzFOPI7_DX180_DY180_CX135_CY135.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\5YqDdNJGqlA_5r24zKrpXAK.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\6AWkESuEJAS_6Fie0PfsLVg.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\6f3b3tzTM25_6Fie0PfsLVg.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\6fRBCoNWVEZ_5r24zKrpXAK.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\6Tc24C8zUoi_6Fie0PfsLVg.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\blank.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\frame.xml" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\story.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\thumbnail.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\user.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_html5.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\MgAndO2.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\Capture.PNG" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\Image.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\style.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\c2.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\cursor.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\Image.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\jquery-3.3.1.min.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\magnetic-cursor.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\MagneticSimulator.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagneticEffect\style.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\SolarSystemIdentification\Capture.PNG" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\SolarSystemIdentification\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\SolarSystemIdentification\Image.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\SolarSystemIdentification\solar.css" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\SolarSystemIdentification\SolarSimulator.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\Capture.PNG" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\Details.txt" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\Image.jpg" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\bot.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\cat.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\coin.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\cork.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\Nail.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\imgs\shoes.png" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\index.html" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\script.js" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Premium\Density\style.css" />
+    <Content Include="Experiments\PrimaryFifthExperiments\All\NatureLight\Candle.html" />
+    <Content Include="Experiments\PrimaryFifthExperiments\All\NatureLight\Details.txt" />
+    <Content Include="Experiments\PrimaryFifthExperiments\All\NatureLight\Image.jpg" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\Details.txt" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\Image.jpg" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\index.html" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\theory.PNG" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\theory2.PNG" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\ModelLabSimulation.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLabSimulation.edmx</DependentUpon>
+      <LastGenOutput>ModelLabSimulation.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelLabSimulation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLabSimulation.edmx</DependentUpon>
+      <LastGenOutput>ModelLabSimulation.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <EntityDeploy Include="Models\ModelLabSimulation.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelLabSimulation.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelLabSimulation.edmx.diagram">
+      <DependentUpon>ModelLabSimulation.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\Site\fonts\Futura.woff" />
+    <Content Include="Content\Site\fonts\Futura1.woff" />
+    <Content Include="Content\Site\fonts\WEB BASED RESULT PUBLICATION SYSTEM FOR EDUCATION BOARDS.pdf" />
+    <Content Include="Content\Site\icon-fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Site\icon-fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Site\icon-fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\SignUp\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-Bold.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-BoldItalic.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-ExtraBold.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-Italic.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-Light.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-LightItalic.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-Regular.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-SemiBold.ttf" />
+    <Content Include="Content\SignUp\fonts\Open_Sans\OpenSans-SemiBoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\SignIn\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="Content\SignIn\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\SignIn\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\SignIn\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="libman.json" />
+    <Content Include="Content\font-awesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\font-awesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\font-awesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\font-awesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\font-awesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\font-awesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\font-awesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\font-awesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\font-awesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\font-awesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\stylesheets\mobile-fonts\open-sans-bold.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\stylesheets\mobile-fonts\open-sans-light.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\stylesheets\mobile-fonts\open-sans-regular.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\Image" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\Litmus.story" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\stylesheets\mobile-fonts\open-sans-bold.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\stylesheets\mobile-fonts\open-sans-light.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\stylesheets\mobile-fonts\open-sans-regular.woff" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\RocksExp.story" />
+    <Content Include="Experiments\PreparatoryFirstExperiments\Free\MagnesiumAndOxygenReaction\MgoExp.rar" />
+    <Content Include="Experiments\PrimaryFifthExperiments\Premium\GenerateElectricity\.vscode\settings.json" />
+    <Content Include="Content\Site\img\Developer\Thumbs.db" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Users\SignIn.cshtml" />
+    <Content Include="Views\Shared\_LayoutSite.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\FAQs.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Users\SignUp.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Experiences\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Experiences\Details.cshtml" />
+    <Content Include="Views\Experiences\CreateComment.cshtml" />
+    <Content Include="Views\PageNotFound\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\html5\lib\img\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\mobile\notes\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\mobile\slides\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\notes\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\LitmusPaper\story_content\slides\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\html5\lib\img\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\notes\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\mobile\slides\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\notes\" />
+    <Folder Include="Experiments\PreparatoryFirstExperiments\All\RocksIdentification\story_content\slides\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55595</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44369/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,7 @@
+title :
+Light Nature Experiment
+
+description :
+in this Experiment you have 3 papers or obstacles which prevent the light to reach the other side,
+the 3 obstacles have 3 round holes inline, you have to make them in the same line to make the light 
+able to reach the other side through holes, then you will discover the nature of light: the light travels in a straight line

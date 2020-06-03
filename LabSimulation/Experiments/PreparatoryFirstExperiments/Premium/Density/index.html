@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ML For Density</title>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+  
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <h4 id="displayDetection"> Hi There! Try to drag An image of an object and drop it into water after detection,
+     We Recommend to use <a href="https://www.pinterest.com/mohamedezz2045/density/" target="_blank"> Our Images Collection </a> </h4>
+<div class="btnsContainer" style="display: inline-flexbox;">
+<button id="BtnDetect" class="btn btn-primary" onclick="Detect()"> Detect </button>
+<button id="BtnSink" class="btn btn-primary" onclick="Sink()"> Drop </button>
+<button id="BtnD" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Conclusion </button>
+<button id="BtnRestart" class="btn btn-primary" onclick="Reset()"> Restart </button>
+</div>
+<div class="uploadOuter">
+  
+<span class="dragBox" style="color: rgb(29, 28, 26);" >
+  Drag and Drop Object here
+<input type="file" onChange="dragNdrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile"  />
+</span>
+</div>
+<div id="preview" style="width: 150px; height: 100px; margin-left: 500px; margin-bottom: 100px;"></div>
+
+
+<div class="header">
+
+  <!--Content before waves-->
+  <div class="inner-header flex" style="opacity: 1;">
+    <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+  </div>
+  
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="color: black; font-size: larger; font-weight: bolder;">Conclusion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="color: black; font-size: large; font-weight: bolder;">
+          Materials having the density lesser than water or other liquid will float. 
+          For example, wood and sponges will float in water. Because of low density than water,
+           Ice will float in water. Materials having more density than water will sink in water.
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <script  src="./script.js"></script>
+
+</body>
+</html>

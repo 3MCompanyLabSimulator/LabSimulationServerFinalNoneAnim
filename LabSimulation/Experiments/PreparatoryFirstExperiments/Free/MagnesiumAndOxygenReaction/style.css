@@ -1,0 +1,312 @@
+body{
+    background:black;
+  }
+  
+  .container{
+    margin:80px auto;
+    width: 60px;
+    height: 60px;
+    position:relative;
+    transform-origin:center bottom;
+    animation-name: flicker;
+    animation-duration:3ms;
+    animation-delay:200ms;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  .flame{
+    bottom:0;
+    position:absolute;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    transform:rotate(-45deg) scale(1.5,1.5);
+  }
+  
+  .yellow{
+    left:15px; 
+    width: 30px;
+    height: 30px;
+    background:gold;
+    box-shadow: 0px 0px 9px 4px gold;
+  }
+  
+  .orange{
+    left:10px; 
+    width: 40px;
+    height: 40px;
+    background:orange;
+    box-shadow: 0px 0px 9px 4px orange;
+  }
+  
+  .red{
+    left:5px;
+    width: 50px;
+    height: 50px;
+    background:OrangeRed;
+    box-shadow: 0px 0px 5px 4px OrangeRed;
+  }
+  
+  .white{
+    left:15px; 
+    bottom:-4px;
+    width: 30px;
+    height: 30px;
+    background:white;
+    box-shadow: 0px 0px 9px 4px white;
+  }
+  
+  .circle{
+    border-radius: 50%;
+    position:absolute;  
+  }
+  
+  .blue{
+    width: 10px;
+    height: 10px;
+    left:25px;
+    bottom:-25px; 
+    background: SlateBlue;
+    box-shadow: 0px 0px 15px 10px SlateBlue;
+  }
+  
+  .black{
+    width: 40px;
+    height: 40px;
+    left:10px;
+    bottom:-60px;  
+    background: black;
+    box-shadow: 0px 0px 15px 10px black;
+  }
+  
+  @keyframes flicker{
+    0%   {transform: rotate(-1deg);}
+    20%  {transform: rotate(1deg);}
+    40%  {transform: rotate(-1deg);}
+    60%  {transform: rotate(1deg) scaleY(1.04);}
+    80%  {transform: rotate(-2deg) scaleY(0.92);}
+    100% {transform: rotate(1deg);}
+  }
+  
+  
+
+.smoke {
+    position:absolute;
+    top:50%;
+    lefT:50%;
+    transform:translate(-50%,-50%);
+}
+
+.smoke {
+    margin:0;
+    cursor: pointer;
+    display:flex;
+    
+}
+
+.smoke li {
+    list-style:none;
+    font-weight:bold;
+    color:#fff;
+    font-size:1em;
+    display: inline-block;
+    padding:5px;
+}
+
+
+.smoke:hover li {
+    animation: smoke 2s linear forwards;
+}
+
+
+@keyframes smoke {
+    0% {
+        transform: rotate(0deg) translateY(0px);
+        opacity: 1;
+        filter:blur(1px);
+    }
+    50% {
+        transform: rotate(-45deg) translateY(-200px);
+          opacity: 0.3;
+          filter:blur(10px);
+      }
+  
+    100% {
+      transform: rotate(180deg) translateY(-400px);
+        opacity: 0;
+        filter:blur(20px);
+        
+    }
+}
+
+.smoke li:nth-child(1){
+    animation-delay:0.2s
+}
+.smoke li:nth-child(2){
+    animation-delay:.6s
+}
+.smoke li:nth-child(3){
+    animation-delay:.9s
+}
+
+
+
+
+  
+  /* @import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css"); */
+  
+  
+  td {
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
+      min-height: 70px;
+      border: 4px solid #000;
+      background-color: #faebd7;
+      position: relative;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 1.5em;
+      transition: 0.15s ease-in-out;
+      cursor:grab;
+  }
+  
+  td:hover {
+      box-shadow: 0 0 1em 0 #fff;
+  }
+  
+  .blank:hover,
+  #pt-info:hover {
+      box-shadow: none;
+  }
+  
+  #periodic-table {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  .per-table-components {
+      margin: 1.5em auto;
+  }
+  
+  #pt-info {
+      position: relative;
+      top: 35px;
+      right: 35px;
+      transform: scale(1.25, 1.25);
+  }
+  
+  .blank {
+      border: none;
+      background-color: transparent;
+  }
+  
+  .element-family {
+      width: 250%;
+      text-align: center;
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  
+  .atom-num {
+      font-size: 0.6em;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+  }
+  
+  .element {
+      display: block;
+      font-size: 1em;
+      font-weight: bold;
+      position: relative;
+      top: 10%;
+  }
+  
+  .name {
+      display: block;
+      font-size: 0.6em;
+      position: relative;
+      top: 32%;
+  }
+  
+  .atom-mass {
+      display: block;
+      font-size: 0.6em;
+      position: relative;
+      top: 45%;
+  }
+  
+  .fas {
+      font-size: 0.85em;
+  }
+  
+  .alka-metal {
+      border-color: #ff2550;
+  }
+  
+  .alka-earth {
+      border-color: #ff7f50;
+  }
+  
+  .trans-metal {
+      border-color: #fafa41;
+  }
+  
+  .basic-metal {
+      border-color: #00ff7f;
+  }
+  
+  .metalloid {
+      border-color: #87ceeb;
+  }
+  
+  .nonmetal {
+      border-color: #168bff;
+  }
+  
+  .halogen {
+      border-color: #ee82ee;
+  }
+  
+  .noble-gas {
+      border-color: #c042ff;
+  }
+  
+  .lanthanide,
+  .lanthanide .fa-asterisk {
+      border-color: #ffa7b5;
+  }
+  
+  .actinide,
+  .actinide .fa-asterisk {
+      border-color: #ff69b4
+  }
+  
+  .lanthanide .fa-asterisk {
+      color: #ffa7b5;
+  }
+  
+  .actinide .fa-asterisk {
+      color: #ff69b4
+  }
+  
+  .complement .fas {
+      font-size: 0.6em;
+      position: absolute;
+      top: 5%;
+      right: 5%;
+  }
+  
+  .table-element .name,
+  .table-element .atom-mass {
+      visibility: hidden;
+      position: absolute;
+  }

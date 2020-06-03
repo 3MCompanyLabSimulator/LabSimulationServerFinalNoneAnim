@@ -1,0 +1,7 @@
+title :
+ Litmus Paper PH Indicator experiment
+
+description :
+The litmus test is performed by placing colored paper onto the a small drop of sample . Usually,
+ litmus paper is either red or blue. 
+Red paper turns blue when the pH is alkaline, while blue paper turns red when the pH turns acidic.

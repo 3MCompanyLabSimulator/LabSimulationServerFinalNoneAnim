@@ -1,0 +1,7 @@
+title :
+Solar System Identification Experiment
+
+description :
+in this Experiment you will have a Simulator of the solar system, you can see the planets movements and you can hover on
+any planet to know more information about it, you will know every planet Name, Details and distance in the solar system.
+you can also check every planet orbiting movement velocity in its own path.

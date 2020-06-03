@@ -1,0 +1,135 @@
+
+/* buttons */
+
+.site-btn {
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+    border: 1px solid #BE3DBE;
+    padding: 15px 10px;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    background: #BE3DBE;
+}
+
+.site-btn:hover {
+    color: #BE3DBE;
+    background-color: #fff;
+    border: 1px solid #BE3DBE;
+    border-radius: 5px;
+}
+
+/*.site-btn-s {
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+    padding: 15px 0px;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    color: #BE3DBE;
+    cursor: pointer;
+    background: #fff;
+    border: none;
+}
+
+    .site-btn-s:hover {
+        color: #381044;
+        text-decoration: underline;
+        background: #fff;
+        border:none;
+    }
+
+    .site-btn-s:focus {
+        color: #381044;
+        text-decoration: underline;
+        background: #fff;
+        border:none;
+    }*/
+
+.site-btn-s {
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+    padding: 15px 0px;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    color: #BE3DBE;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #fff;
+}
+
+    .site-btn-s:hover {
+        color: #381044;
+        text-decoration: underline;
+        background: #fff;
+    }
+
+
+
+
+
+
+.r-btn {
+    border:0px;
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    
+    height: 50px;
+    width: 50px;
+    background: #BE3DBE;
+    
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 19px;
+}
+
+    .r-btn:hover {
+        background: #381044;
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+/* Radio */
+
+.radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.radio-toolbar label {
+    display: inline-block;
+    color: #fff;
+    background-color: #381044;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #BE3DBE;
+    border-radius: 4px;
+}
+
+.radio-toolbar label:hover {
+    background-color: #F79BF6;
+}
+
+.radio-toolbar input[type="radio"]:focus+label {
+    border: 2px dashed #381044;
+}
+
+.radio-toolbar input[type="radio"]:checked+label {
+    background-color: #BE3DBE;
+    border-color: #381044;
+}
+
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+  <title>Equation Simulator</title>
+
+</head>
+<body>
+
+  <p id="command" style="color: lavender; margin-left: 500px;" >Drag Mg on the flame to see the equation and result</p>
+
+    <div class="container" id="drop" style="clear: both; margin-left: 200px; float: left;">
+        <div class="red flame"></div>
+        <div class="orange flame"></div>
+        <div class="yellow flame"></div>
+        <div class="white flame"></div>
+        <div class="blue circle"></div>
+        <div class="black circle"></div>
+      </div>
+
+
+
+      <div id="periodic-table" style="clear: both; float: left; margin-left: 250px; width: 200px;" >
+        <table class="per-table-components">
+          <tr>
+            <td class="table-element nonmetal">
+              <span class="atom-num">1</span>
+              <span class="element">H</span>
+              <span class="name">Hydrogen</span>
+              <span class="atom-mass">1.01</span>
+            </td>
+
+            <td class="table-element noble-gas">
+              <span class="atom-num">2</span>
+              <span class="element">He</span>
+              <span class=" name">Helium</span>
+              <span class=" atom-mass">4.00</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-element alka-metal">
+              <span class="atom-num">3</span>
+              <span class="element">Li</span>
+              <span class=" name">Lithium</span>
+              <span class=" atom-mass">6.94</span>
+            </td>
+            <td class="table-element alka-earth">
+              <span class="atom-num">4</span>
+              <span class="element">Be</span>
+              <span class=" name">Beryllium</span>
+              <span class=" atom-mass">9.01</span>
+            </td>
+  
+          <tr>
+            <td class="table-element alka-metal">
+              <span class="atom-num">11</span>
+              <span class="element">Na</span>
+              <span class=" name">Sodium</span>
+              <span Class=" atom-mass">23.00</span>
+            </td>
+            <td class="table-element alka-earth" id="Mg">
+              <span class="atom-num">12</span>
+              <span class="element">Mg</span>
+              <span class=" name">Magnesium</span>
+              <span Class=" atom-mass">24.30</span>
+            </td>
+      
+            <td class="table-element basic-metal">
+              <span class="atom-num">13</span>
+              <span class="element">Al</span>
+              <span class=" name">Aluminium</span>
+              <span Class=" atom-mass">26.98</span>
+            </td>
+            <td class="table-element metalloid" id="Si">
+              <span class="atom-num">14</span>
+              <span class="element">Si</span>
+              <span class=" name">Silicon</span>
+              <span Class=" atom-mass">28.08</span>
+            </td>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                  $('#Mg').draggable({
+                    revert: 'valid'
+                  });
+              
+                  $('#drop').droppable({
+                    drop: function(event, ui) {
+                      ui.draggable.hide(50);
+                      document.getElementById('T').style.display = 'block';
+                      document.getElementById('Mgo').style.display = 'flex';
+                      document.getElementById('command').innerHTML = 'Now, Hover On Mgo to See its Apperance';
+                    }
+                  });
+               
+                });
+            </script>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+
+
+<script>
+    
+                $(function () {
+        $('.text1').textillate({
+            // loop: true,
+            initialDelay: 1000
+        });    
+    });
+    
+               
+</script>
+
+<ul class="smoke" id="Mgo" style="margin-left: 60px; float: left; display: none; font-size: x-large; font-weight: bolder; transform: translateY(-142px);">
+  <li>2</li>
+  <li>Mg</li>
+  <li>O</li>
+</ul>
+
+<p class="text1" id="T" style="color: lavenderblush; display: none; float: left; font-size: x-large; font-weight: bolder; width: 300px;">
+     Mg + O2  ----  >   
+    </p>
+  
+   
+
+    </body>
+
+
+</html>

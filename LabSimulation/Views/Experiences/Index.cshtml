@@ -1,0 +1,244 @@
+﻿@using LabSimulation.Models
+@model HomeIndexVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="/Content/Site/img/LabSimulator.jpg">
+    <div class="container">
+        <div class="hero-text text-white">
+            <h1>Lab Simulator</h1>
+            <p>
+                It is an interactive learning platform that allows students to practice freely in a more fun and exciting virtual labs.
+            </p>
+            <h2>Experiments</h2>
+        </div>
+
+    </div>
+</section>
+<!-- Hero section end -->
+<!-- Educational Stages section -->
+<section class="categories-section spad">
+    <div class="container">
+        <div class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">Experiments For Educational Stages</h2>
+            <p>
+                The platform now covers some experiments in science for the preparatory and Primary stages in the Egyptian curriculum.<br /> The secondary curriculum will soon be covered.
+            </p>
+        </div>
+        <div class="row">
+
+            <!-- Educational Stages -->
+            @foreach (var item in Model.EducationalLeve_CountExperience)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="categorie-item">
+                        <div class="ci-thumb set-bg" data-setbg="@item.ImageLevelPath"></div> 
+                        <div class="ci-text">
+                            <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur</p> -->
+                            <span>@Html.DisplayFor(modelItem => item.CountExperience) Experiments</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Educational Stages end -->
+
+
+<section class="spad bg-light">
+    <!-- search section -->
+
+    <section class="search-section mb-5">
+        <div class="container">
+            <div class="search-warp">
+                <div class="title-section mb-5 text-center col-12 text-white">
+                    <h2 class="mb-4">Search For Experiment</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <!-- search form -->
+                        <div class="course-search-form ">
+
+                            <input type="text" id="myInput" onkeyup="myFunctionSearch()" class="w-100" placeholder="Experiment Name">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- search section end -->
+    <!-- Search Area -->
+    <section class="categories-section">
+        <div class="container">
+
+            <div class="row" id="SearchArea">
+
+                <!-- Educational Stages -->
+                @foreach (var item in Model.ExperienceInfo)
+                {
+                    <div class="col-lg-4 col-md-6 ExperienceSearch">
+                        <div class="course-item">
+                            <a class="LinkExperience" href="/Experiences/Details/@item.ID?subjectID=@item.SubjectID&educationalYearID=@item.EducationalYearID&educationalLevelID=@item.EducationalLevelID">
+                                <div class="course-thumb set-bg" data-setbg="@item.Image">
+                                    <div class="price">@item.Type </div>
+                                </div>
+                                <div class="course-info">
+                                    <div class="course-text">
+                                        <h5>@item.ExperienceName</h5>
+                                        <div class="students">@item.SubjectName</div>
+                                        <div class="students">@item.EducationalYearName</div>
+                                        <div class="students">@item.EducationalLevelName</div>
+
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+    <!-- Search Area end -->
+
+</section>
+
+
+<!-- Experiment section -->
+<section class="course-section spad">
+    <div class="container">
+        <div class="title-section mb-5 text-center col-12">
+            <h2 class="mb-4">Laboratory Experiments</h2>
+            <p>
+                Here are the most experiments that have been admired by teachers and experts, and and we would like to highly recommend it to you to try it.
+            </p>
+        </div>
+    </div>
+    <div class="course-warp">
+        <ul class="course-filter controls">
+            <li class="control active" data-filter="all">All</li>
+            @foreach (var item in Model.EducationalLeve_CountExperience)
+            {
+
+                <li class="control" data-filter=".@item.Name.Replace(' ','_')">@Html.DisplayFor(modelItem => item.Name)</li>
+            }
+        </ul>
+        <div class="row course-items-area">
+
+            <!-- course -->
+            @foreach (var item in Model.ExperienceInfo)
+            {
+
+                <div class="mix col-lg-3 col-md-4 col-sm-6 @item.EducationalLevelName.Replace(' ','_')">
+                    <a class="LinkExperience" href="/Experiences/Details/@item.ID?subjectID=@item.SubjectID&educationalYearID=@item.EducationalYearID&educationalLevelID=@item.EducationalLevelID">
+                        <div class="course-item">
+                            <div class="course-thumb set-bg" data-setbg="@item.Image">
+                                <div class="price">@item.Type </div>
+                            </div>
+                            <div class="course-info">
+                                <div class="course-text">
+                                    <h5>@item.ExperienceName</h5>
+                                    <div class="students">@item.SubjectName</div>
+                                    <div class="students">@item.EducationalYearName</div>
+                                    <div class="students">@item.EducationalLevelName</div>
+
+                                </div>
+
+                                <div class="dropdown-divider"></div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        </div>
+
+    </div>
+</section>
+
+
+<!-- banner section -->
+<section class="banner-section spad">
+    <div class="container">
+        @{
+            if (Request.Cookies["Login"] == null)
+            {
+                <div class="title-section mb-5 text-center col-12">
+                    <h2 class="mb-4">Join Us Now !</h2>
+                    <p>
+                        Join us now and do school laboratory experiments from your home, and enjoy our services and account features.
+                    </p>
+                </div>
+                <div class="text-center pt-5">
+
+                    <a href="~/Users/SignUp" class="site-btn">Register Now</a>
+
+                </div>
+            }
+            else
+            {
+                if (Request.Cookies["Login"]["IsPremium"] == "False")
+                {
+                    if (Request.Cookies["Login"]["UserType"] == "Student")
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                Contact your school to upgrade their account to premium and Consequently, all students will enjoy the premium features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="title-section mb-5 text-center col-12">
+                            <h2 class="mb-4"> Upgrade To Premium </h2>
+                            <p>
+                                You can upgrade to a premium account and enjoy account services and features.
+                            </p>
+                        </div>
+                        <div class="text-center pt-5">
+
+                            <a href="~/Profile/Index/@Request.Cookies["Login"]["UserID"]#ChangePricePlanSection" class="site-btn">Upgrade price plan</a>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="title-section mb-5 text-center col-12">
+                        <h2 class="mb-4"> Enjoy with the premium account </h2>
+                        <p>
+                            We hope you enjoy the services and features of the premium account, wait for everything new with that special account.
+                        </p>
+                    </div>
+                    <div class="text-center pt-5">
+
+
+                    </div>
+
+                }
+            }
+        }
+
+    </div>
+</section>
+<!-- banner section end -->

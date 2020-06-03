@@ -1,0 +1,1122 @@
+﻿:root {
+    --effect: hover 1s linear infinite;
+}
+
+
+#preloder {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    /*background-color: #BE3DBE;*/
+    /*background-image: url(/Content/Site/img/LabSimulator.jpg);*/
+    background-color: #292548;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+    #preloder div {
+        text-align: center;
+    }
+
+    #preloder p {
+        display: inline-block;
+        /*  text-transform: uppercase;*/
+        text-align: center;
+        font-size: 4em;
+        font-family: arial;
+        font-weight: 600;
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        color: #fff;
+        -webkit-text-stroke: 2px gray;
+    }
+
+        #preloder p:nth-child(1) {
+            -webkit-animation: var(--effect);
+            animation: var(--effect);
+        }
+
+        #preloder p:nth-child(2) {
+            -webkit-animation: var(--effect) .125s;
+            animation: var(--effect) .125s;
+        }
+
+        #preloder p:nth-child(3) {
+            -webkit-animation: var(--effect) .25s;
+            animation: var(--effect) .25s;
+        }
+
+        #preloder p:nth-child(4) {
+            -webkit-animation: var(--effect) .375s;
+            animation: var(--effect) .375s;
+        }
+
+        #preloder p:nth-child(5) {
+            -webkit-animation: var(--effect) .5s;
+            animation: var(--effect) .5s;
+        }
+
+        #preloder p:nth-child(6) {
+            -webkit-animation: var(--effect) .625s;
+            animation: var(--effect) .625s;
+        }
+
+        #preloder p:nth-child(7) {
+            -webkit-animation: var(--effect) .75s;
+            animation: var(--effect) .75s;
+        }
+
+        #preloder p:nth-child(8) {
+            -webkit-animation: var(--effect) .875s;
+            animation: var(--effect) .875s;
+        }
+
+        #preloder p:nth-child(9) {
+            -webkit-animation: var(--effect) 1s;
+            animation: var(--effect) 1s;
+        }
+
+        #preloder p:nth-child(10) {
+            -webkit-animation: var(--effect) 1.125s;
+            animation: var(--effect) 1.125s;
+        }
+
+        #preloder p:nth-child(11) {
+            -webkit-animation: var(--effect) 1.25s;
+            animation: var(--effect) 1.25s;
+        }
+
+        #preloder p:nth-child(12) {
+            -webkit-animation: var(--effect) 1.5s;
+            animation: var(--effect) 1.5s;
+        }
+
+        #preloder p:nth-child(13) {
+            -webkit-animation: var(--effect) 1.75s;
+            animation: var(--effect) 1.75s;
+        }
+
+@-webkit-keyframes hover {
+    0% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        color: pink;
+        -webkit-text-stroke: 3px red;
+        -webkit-filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+    }
+
+    50% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+}
+
+@keyframes hover {
+    0% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        color: pink;
+        -webkit-text-stroke: 3px red;
+        -webkit-filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+        filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+    }
+
+    50% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+}
+/*************************************************************************************************************************************/
+/*
+
+html,body {
+	background-color: #E6E9EA;
+	text-align: center;
+}
+*/
+#preloder #flask {
+    width: 197px;
+    height: 230px;
+    margin: 0 auto;
+    /*	margin-top: 350px;*/
+    position: relative;
+}
+
+    #preloder #flask svg {
+        width: 200px;
+        height: 230px;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #preloder #flask .background {
+        width: 197px;
+        height: 100px;
+        background-color: #5BBCFC;
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-animation: liquid 3s infinite,liquid-color 2s infinite;
+        animation: liquid 3s infinite,liquid-color 2s infinite;
+    }
+
+#preloder .bubble {
+    width: 40px;
+    height: 40px;
+    background: #5BBCFC;
+    border-radius: 40px;
+    position: absolute;
+    top: 180px;
+}
+
+
+@-webkit-keyframes liquid {
+    0% {
+        height: 100px;
+    }
+
+    10% {
+        height: 97px;
+    }
+
+    35% {
+        height: 100px;
+    }
+
+    50% {
+        height: 102px;
+    }
+
+    80% {
+        height: 98px;
+    }
+
+    100% {
+        height: 100px;
+    }
+}
+
+
+@keyframes liquid {
+    0% {
+        height: 100px;
+    }
+
+    10% {
+        height: 97px;
+    }
+
+    35% {
+        height: 100px;
+    }
+
+    50% {
+        height: 102px;
+    }
+
+    80% {
+        height: 98px;
+    }
+
+    100% {
+        height: 100px;
+    }
+}
+
+@-webkit-keyframes liquid-color {
+    from {
+        -webkit-filter: hue-rotate(-360deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes liquid-color {
+    from {
+        -webkit-filter: hue-rotate(-360deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(0deg);
+    }
+}
+
+
+@-webkit-keyframes bubble {
+    0% {
+        top: 200px;
+    }
+
+    100% {
+        top: -200px;
+        opacity: 0;
+    }
+}
+
+
+@keyframes bubble {
+    0% {
+        top: 200px;
+    }
+
+    100% {
+        top: -200px;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes side {
+    0% {
+        margin-right: 0px;
+    }
+
+    100% {
+        margin-right: 35px;
+    }
+}
+
+@keyframes side {
+    0% {
+        margin-right: 0px;
+    }
+
+    100% {
+        margin-right: 35px;
+    }
+}
+
+
+
+.b1, .b2, .b3 {
+    right: 60px;
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    opacity: 0.6;
+    -webkit-animation: bubble 2s linear infinite, liquid-color 2s infinite, side 2s ease-in-out infinite alternate;
+    animation: bubble 2s linear infinite, liquid-color 2s infinite, side 2s ease-in-out infinite alternate;
+}
+
+.b2 {
+    right: 65px;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-animation-delay: 2s,0s,2s;
+    animation-delay: 2s,0s,2s;
+}
+
+.b3 {
+    right: 70px;
+    -webkit-animation-delay: 1s,0s,1s;
+    animation-delay: 1s,0s,1s;
+    -webkit-animation: bubble 5s linear infinite, liquid-color 2s infinite, side 3s ease-in-out infinite alternate;
+    animation: bubble 5s linear infinite, liquid-color 2s infinite, side 3s ease-in-out infinite alternate;
+}
+
+.b4, .b5 {
+    right: 65px;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0.8;
+    -webkit-animation: bubble 6s linear infinite, liquid-color 2s infinite, side 5s ease-in-out infinite alternate;
+    animation: bubble 6s linear infinite, liquid-color 2s infinite, side 5s ease-in-out infinite alternate;
+    -webkit-animation-delay: 2s,0s,2s;
+    animation-delay: 2s,0s,2s;
+}
+
+.b5 {
+    right: 55px;
+    -webkit-animation-delay: 2s,0s,2s;
+    animation-delay: 2s,0s,2s;
+}
+
+.b6, .b7, .b8 {
+    right: 65px;
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.4;
+    -webkit-animation: bubble 4s linear infinite, liquid-color 2s infinite, side 3s ease-in-out infinite alternate;
+    animation: bubble 4s linear infinite, liquid-color 2s infinite, side 3s ease-in-out infinite alternate;
+    -webkit-animation-delay: 4s,0s,4s;
+    animation-delay: 4s,0s,4s;
+}
+
+.b7 {
+    right: 70px;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-animation-delay: 1s,0s,1s;
+    animation-delay: 1s,0s,1s;
+}
+
+.b8 {
+    right: 65px;
+    -webkit-animation-delay: 2s,0s,2s;
+    animation-delay: 2s,0s,2s;
+}
+
+.b9, .b0 {
+    right: 70px;
+    -webkit-transform: scale(0.65);
+    transform: scale(0.65);
+    opacity: 0.7;
+    -webkit-animation: bubble 5s linear infinite, liquid-color 2s infinite, side 5s ease-in-out infinite alternate;
+    animation: bubble 5s linear infinite, liquid-color 2s infinite, side 5s ease-in-out infinite alternate;
+}
+
+.b0 {
+    right: 60px;
+    -webkit-animation-delay: 3s,0s,3s;
+    animation-delay: 3s,0s,3s;
+}
+
+
+
+#preloder .swirl {
+    width: 20px;
+    height: 20px;
+    background: #5BBCFC;
+    border-radius: 20px;
+    position: absolute;
+    top: 140px;
+    left: 80px;
+}
+
+
+@-webkit-keyframes swirl {
+    0% {
+        top: 140px;
+    }
+
+    100% {
+        top: 128px;
+    }
+}
+
+
+@keyframes swirl {
+    0% {
+        top: 140px;
+    }
+
+    100% {
+        top: 128px;
+    }
+}
+
+
+
+.s0 {
+    -webkit-animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+}
+
+.s1 {
+    left: 100px;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    -webkit-animation-delay: 0s,2s;
+    animation-delay: 0s,2s;
+}
+
+.s2 {
+    left: 40px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    -webkit-animation-delay: 0s,3s;
+    animation-delay: 0s,3s;
+}
+
+.s3 {
+    left: 60px;
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+    -webkit-animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+    -webkit-animation-delay: 0s,5s;
+    animation-delay: 0s,5s;
+}
+
+.s4 {
+    left: 120px;
+    -webkit-animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 2s ease-in-out infinite alternate;
+    -webkit-animation-delay: 0s,3s;
+    animation-delay: 0s,3s;
+}
+
+.s5 {
+    left: 135px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+    animation: liquid-color 2s infinite, swirl 1s ease-in-out infinite alternate;
+    -webkit-animation-delay: 0s,2s;
+    animation-delay: 0s,2s;
+}
+/***********************************************************************************************************************/
+
+.flask {
+    height: 405px;
+    width: 368px;
+    position: absolute;
+    bottom: 0;
+}
+
+.flask__throat {
+    width: 64px;
+    height: 155px;
+    overflow: hidden;
+    position: absolute;
+    left: 152px;
+    top: 0;
+}
+
+.flask__throat-one {
+    width: 150px;
+    height: 50px;
+    background-color: #5c30ae;
+    position: absolute;
+    right: -26px;
+    top: 110px;
+    z-index: 3;
+    transform: rotate(24deg);
+    transform-origin: right top;
+    animation-name: animation_bg_element6;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__throat-two {
+    width: 150px;
+    height: 60px;
+    background-color: #37acdd;
+    transform: rotate(20deg);
+    transform-origin: right top;
+    transform: rotate(20deg);
+    transform-origin: right top;
+    position: absolute;
+    right: -35px;
+    top: 35px;
+    z-index: 3;
+    animation-name: animation_bg_flask__circle2;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__throat-three {
+    width: 100%;
+    height: 50px;
+    background-color: #5c30ae;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    animation-name: animation_bg_element6;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__throat-four {
+    width: 150px;
+    height: 20px;
+    background-color: #6c49ac;
+    transform: rotate(20deg);
+    transform-origin: right top;
+    position: absolute;
+    right: -45px;
+    top: 100px;
+    z-index: 3;
+    animation-name: animation_bg_element7;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.flask__triangle {
+    width: 368px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .flask__triangle::before,
+    .flask__triangle::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 250px solid #292548;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+    }
+
+    .flask__triangle:before {
+        border-right: 152px solid transparent;
+        left: 0;
+    }
+
+    .flask__triangle:after {
+        border-left: 152px solid transparent;
+        right: 0;
+    }
+
+.flask__bottom-one {
+    width: 0;
+    height: 0;
+    border-bottom: 55px solid #3a2481;
+    border-left: 32px solid transparent;
+    border-right: 42px solid transparent;
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+    animation-name: animation_bg_element1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom-two {
+    width: 0;
+    height: 0;
+    border-bottom: 165px solid #4266c0;
+    border-left: 93px solid transparent;
+    border-right: 200px solid transparent;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    animation-name: animation_bg_element2;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom-five {
+    width: 100%;
+    height: 75px;
+    background-color: #4248c0;
+    position: absolute;
+    left: 50px;
+    bottom: 18px;
+    z-index: 3;
+    transform: rotate(24deg);
+    transform-origin: left top;
+    animation-name: animation_bg_element3;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom-six {
+    width: 100%;
+    height: 170px;
+    background-color: #37acdd;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    animation-name: animation_bg_flask__circle1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom-seven {
+    width: 100%;
+    height: 218px;
+    background-color: #1493c8;
+    position: absolute;
+    right: -95px;
+    bottom: 24px;
+    z-index: 3;
+    transform: rotate(24deg);
+    transform-origin: right top;
+    animation-name: animation_bg_flask__circle2;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask__bottom-eight {
+    width: 100%;
+    height: 50px;
+    background-color: #5c30ae;
+    position: absolute;
+    right: -95px;
+    bottom: 218px;
+    z-index: 3;
+    transform: rotate(-12deg);
+    transform-origin: left top;
+    animation-name: animation_bg_element6;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+.flask_small {
+    width: 200px;
+    height: 230px;
+}
+
+    .flask_small .flask__throat {
+        width: 36px;
+        height: 99px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 82px;
+    }
+
+    .flask_small .flask__throat-one {
+        width: 150px;
+        height: 50px;
+        background-color: #5c30ae;
+        position: absolute;
+        right: -26px;
+        top: 75px;
+        z-index: 3;
+        transform: rotate(24deg);
+        transform-origin: right top;
+    }
+
+    .flask_small .flask__throat-two {
+        width: 75px;
+        height: 25px;
+        background-color: #37acdd;
+        transform-origin: right top;
+        position: absolute;
+        right: -30px;
+        top: 37px;
+        z-index: 3;
+    }
+
+    .flask_small .flask__throat-three {
+        height: 20px;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+    }
+
+    .flask_small .flask__throat-four {
+        top: 60px;
+        z-index: 2;
+    }
+
+    .flask_small .flask__triangle {
+        width: 200px;
+        height: 135px;
+    }
+
+        .flask_small .flask__triangle:before, .flask_small .flask__triangle:after {
+            border-top: 135px solid #292548;
+        }
+
+        .flask_small .flask__triangle:before {
+            border-right: 82px solid transparent;
+        }
+
+        .flask_small .flask__triangle:after {
+            border-left: 82px solid transparent;
+        }
+
+    .flask_small .flask__bottom-one {
+        border-bottom: 35px solid #3a2481;
+        border-left: 15px solid transparent;
+        border-right: 24px solid transparent;
+    }
+
+    .flask_small .flask__bottom-two {
+        border-bottom: 94px solid #4266c0;
+        border-left: 44px solid transparent;
+        border-right: 113px solid transparent;
+    }
+
+    .flask_small .flask__bottom-five {
+        bottom: -21px;
+        left: 25px;
+    }
+
+    .flask_small .flask__bottom-six {
+        height: 90px;
+    }
+
+    .flask_small .flask__bottom-seven {
+        bottom: 26px;
+        height: 85px;
+        right: -14px;
+    }
+
+    .flask_small .flask__bottom-eight {
+        bottom: 107px;
+        height: 20px;
+        right: 0;
+    }
+
+.flask_left {
+    left: 3%;
+}
+
+    .flask_left .circle_small {
+        animation-duration: 2000ms;
+        animation-delay: 100ms;
+    }
+
+    .flask_left .circle_little-white {
+        left: 48%;
+        animation-duration: 2000ms;
+        animation-delay: 0ms;
+    }
+
+    .flask_left .circle_little-purpure {
+        left: 50%;
+        animation-duration: 2000ms;
+        animation-delay: 200ms;
+    }
+
+    .flask_left .circle_little-blue {
+        left: 45%;
+        animation-duration: 2000ms;
+        animation-delay: 300ms;
+    }
+
+    .flask_left .flask__circle1 {
+        left: 45%;
+        animation-duration: 2000ms;
+        animation-delay: 600ms;
+    }
+
+    .flask_left .flask__circle2 {
+        left: 47%;
+        animation-duration: 2000ms;
+        animation-delay: 900ms;
+    }
+
+.flask_center {
+    right: 31%;
+}
+
+    .flask_center .circle_little-white {
+        animation-duration: 3000ms;
+        animation-delay: 0ms;
+    }
+
+    .flask_center .circle_little-purpure {
+        animation-duration: 3000ms;
+        animation-delay: 200ms;
+    }
+
+    .flask_center .circle_little-white, .flask_center .circle_little-purpure {
+        left: 50%;
+    }
+
+    .flask_center .circle_little-blue {
+        animation-duration: 3000ms;
+        animation-delay: 500ms;
+    }
+
+    .flask_center .circle_small {
+        animation-duration: 3000ms;
+        animation-delay: 1400ms;
+    }
+
+    .flask_center .circle_small, .flask_center .circle_little-blue {
+        left: 45%;
+    }
+
+.flask_right {
+    right: 0;
+}
+
+    .flask_right .circle_small {
+        animation-duration: 4200ms;
+        animation-delay: 400ms;
+    }
+
+    .flask_right .circle_little-white {
+        left: 48%;
+        animation-duration: 4200ms;
+        animation-delay: 0ms;
+    }
+
+    .flask_right .circle_little-purpure {
+        left: 52%;
+        animation-duration: 4200ms;
+        animation-delay: 200ms;
+    }
+
+    .flask_right .circle_little-blue {
+        left: 45%;
+        animation-duration: 4200ms;
+        animation-delay: 600ms;
+    }
+
+@keyframes animation_bg_element1 {
+    0% {
+        border-bottom-color: #3a2481;
+    }
+
+    25% {
+        border-bottom-color: #242781;
+    }
+
+    50% {
+        border-bottom-color: #244081;
+    }
+
+    75% {
+        border-bottom-color: #242781;
+    }
+}
+
+@keyframes animation_bg_element2 {
+    0% {
+        border-bottom-color: #4266c0;
+    }
+
+    25% {
+        border-bottom-color: #4287c0;
+    }
+
+    50% {
+        border-bottom-color: #42a8c0;
+    }
+
+    75% {
+        border-bottom-color: #4287c0;
+    }
+}
+
+@keyframes animation_bg_element3 {
+    0% {
+        background-color: #4248c0;
+    }
+
+    25% {
+        background-color: #4269c0;
+    }
+
+    50% {
+        background-color: #428ac0;
+    }
+
+    75% {
+        background-color: #4269c0;
+    }
+}
+
+@keyframes animation_bg_flask__circle1 {
+    0% {
+        background-color: #37acdd;
+    }
+
+    25% {
+        background-color: #37d8dd;
+    }
+
+    50% {
+        background-color: #37ddb5;
+    }
+
+    75% {
+        background-color: #37d8dd;
+    }
+}
+
+@keyframes animation_bg_flask__circle2 {
+    0% {
+        background-color: #1493c8;
+    }
+
+    25% {
+        background-color: #14c2c8;
+    }
+
+    50% {
+        background-color: #14c89d;
+    }
+
+    75% {
+        background-color: #14c2c8;
+    }
+}
+
+@keyframes animation_bg_element6 {
+    0% {
+        background-color: #5c30ae;
+    }
+
+    25% {
+        background-color: #3a30ae;
+    }
+
+    50% {
+        background-color: #3048ae;
+    }
+
+    75% {
+        background-color: #3a30ae;
+    }
+}
+
+@keyframes animation_bg_element7 {
+    0% {
+        background-color: #6c49ac;
+    }
+
+    25% {
+        background-color: #5249ac;
+    }
+
+    50% {
+        background-color: #495aac;
+    }
+
+    75% {
+        background-color: #5249ac;
+    }
+}
+
+/*
+ *bubble
+ */
+
+.circle {
+    border-radius: 50%;
+    border: 1px solid #fff;
+    position: absolute;
+    left: 48%;
+    top: 35px;
+    animation-name: circle;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-delay: 0s;
+}
+
+.circle_little {
+    width: 5px;
+    height: 5px;
+    margin-left: 4px;
+}
+
+.circle_little-white {
+    background-color: #fff;
+}
+
+.circle_little-purpure {
+    background-color: #6c49ac;
+    border: 1px solid #6c49ac;
+}
+
+.circle_little-blue {
+    background-color: #117fba;
+    border: 1px solid #117fba;
+}
+
+.circle_small {
+    width: 20px;
+    height: 20px;
+}
+
+.circle_middle {
+    width: 45px;
+    height: 45px;
+    margin-left: 2px;
+    left: 42%;
+}
+
+@keyframes circle {
+    0% {
+        transform: translateZ(0px) translateY(20px) scale(1);
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateZ(0px) translateY(-200px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateZ(0px) translateY(20px) scale(1) rotateZ(0);
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateZ(0px) translateY(-200px) scale(1) rotateZ(360deg);
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .flask_center {
+        display: none;
+    }
+}
+
+@media (max-width: 639px) {
+
+    .flask_right {
+        display: none;
+    }
+}
+
+/*
+=====
+DEMO
+=====
+*/
+

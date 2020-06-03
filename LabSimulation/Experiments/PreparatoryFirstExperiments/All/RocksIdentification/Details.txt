@@ -1,0 +1,7 @@
+title :
+Rocks Identification Experiment
+
+description :
+in this Experiment you have on the table multi samples from differnt rocks types, you can check every sample of it to know
+more about that rock and its type, then you can test your information and knowldege about rocks types by a quick quiz
+that we offer to you in this Experiment

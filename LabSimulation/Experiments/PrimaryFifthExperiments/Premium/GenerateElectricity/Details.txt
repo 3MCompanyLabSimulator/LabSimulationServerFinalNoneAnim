@@ -1,0 +1,8 @@
+title :
+Generate Electricity From Magnetic Effect
+
+description :
+In this Experiment We will discover a method to generate electricity from Magnets,
+This method of generating electricity, called induction, was discovered by Michael Faraday.
+He found that the stronger the magnets were or the more turns of wire in the coil, 
+and the quicker the motion of the magnet or coil, the greater the voltage produced.
